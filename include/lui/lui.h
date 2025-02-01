@@ -76,7 +76,7 @@ extern "C" {
 // clang-format on
 #endif
 
-namespace lvtk {
+namespace lui {
 template <typename... T>
 inline static void ignore (T&&...) noexcept {}
 } // namespace lvtk

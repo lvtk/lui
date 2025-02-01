@@ -35,13 +35,13 @@ inline static void draw_dial_proto (Graphics& g, lvtk::Dial& dial, Rectangle<dou
     const float anchor = da0 + anchorPos * (da1 - da0);
     const float a1     = angle < anchor ? angle : anchor;
     const float a2     = angle < anchor ? anchor : angle;
-    lvtk::ignore (a1, a2);
+    lui::ignore (a1, a2);
 
     const bool is_mouse_over = false;
 
     if (radius > 12.0f) {
         int line_size = (int) std::max (2.0, std::min (20.0, radius * 0.085));
-        lvtk::ignore (line_size);
+        lui::ignore (line_size);
         float line_trim       = radius > 32.f ? -3.0f : -2.f;
         float line_offset     = radius > 32.f ? -4.f : -1.f;
         const float thickness = 0.82f;

@@ -360,7 +360,7 @@ public:
         if (view == nullptr)
             return;
         auto status = puglRealize (view);
-        lvtk::ignore (status);
+        lui::ignore (status);
     }
 
     void drag_pressed_widgets (Point<float> pos) {

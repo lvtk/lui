@@ -157,12 +157,12 @@ public:
         @param y The y coordinate.
      */
     virtual bool show_text (const std::string_view text) {
-        ignore (text);
+        lui::ignore (text);
         return false;
     }
 
     virtual void draw_image (Image image, Transform transform) {
-        lvtk::ignore (image, transform);
+        lui::ignore (image, transform);
     }
 };
 

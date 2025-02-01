@@ -51,7 +51,7 @@ int WinMain (HINSTANCE hInstance,
              HINSTANCE hPrevInstance,
              LPSTR lpCmdLine,
              int nShowCmd) {
-    lvtk::ignore (hInstance, hPrevInstance, lpCmdLine, nShowCmd);
+     (hInstance, hPrevInstance, lpCmdLine, nShowCmd);
 
     struct ClogBuf : public std::stringbuf {
         ~ClogBuf() { sync(); }

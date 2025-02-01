@@ -69,7 +69,7 @@ void View::set_position (int x, int y) {
         static_cast<int> (x * scale_factor()), 
         static_cast<int> (y * scale_factor()));
     // clang-format on
-    lvtk::ignore (st);
+    lui::ignore (st);
 }
 
 void View::set_size (int width, int height) {
@@ -78,7 +78,7 @@ void View::set_size (int width, int height) {
         static_cast<unsigned int> (width * scale_factor()),
         static_cast<unsigned int> (height * scale_factor()));
     // clang-format on
-    lvtk::ignore (st);
+    lui::ignore (st);
 }
 
 Rectangle<int> View::bounds() const {
