@@ -5,7 +5,7 @@
 
 #include <cstdint>
 
-namespace lvtk {
+namespace lui {
 
 /** A type of notification
     @ingroup widgets
@@ -17,4 +17,4 @@ enum class Notify : uint32_t {
     ASYNC     ///< Send notification async
 };
 
-} // namespace lvtk
+} // namespace lui

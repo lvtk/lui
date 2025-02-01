@@ -15,7 +15,7 @@
 #    endif
 #endif
 
-namespace lvtk {
+namespace lui {
 
 // clang-format off
 #if defined(LUI_STD_EXPERIMENTAL_OPTIONAL)
@@ -31,4 +31,4 @@ namespace lvtk {
 #endif
 // clang format-on
 
-} // namespace lvtk
+} // namespace lui

@@ -8,10 +8,10 @@
 #include <lui/font.hpp>
 #include <stb/stb_truetype.h>
 
-namespace lvtk {
+namespace lui {
 namespace stb {
 
-class Typeface : public lvtk::Typeface {
+class Typeface : public lui::Typeface {
 public:
     Typeface() {}
     ~Typeface() {

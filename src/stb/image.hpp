@@ -9,7 +9,7 @@
 
 #include <lui/image.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace stb {
 
 /** Prepare for loading. STB doesn't seem to have a way to determine
@@ -22,7 +22,7 @@ static inline void prepare_load() {
     stbi_set_unpremultiply_on_load (true);
 }
 
-/** Converts STBI 4 channel output to premultiplied ARGB as expected by lvtk::Image. */
+/** Converts STBI 4 channel output to premultiplied ARGB as expected by lui::Image. */
 template<typename Size>
 static inline void rgba_to_argb_and_premulitply (uint8_t* image, Size size) {
     for (uint32_t i = 0; i < static_cast<uint32_t> (size); i += 4) {
@@ -77,9 +77,9 @@ static inline uint8_t* load_file (std::string_view filename,
     return image;
 }
 
-class Pixels : public lvtk::Pixels {
+class Pixels : public lui::Pixels {
 public:
-    Pixels() : lvtk::Pixels() {}
+    Pixels() : lui::Pixels() {}
     Pixels (std::string_view filename) { 
         _data = stb::load_file (filename, _width, _height, _n_comps);
         _format = PixelFormat::ARGB32;
@@ -123,4 +123,4 @@ private:
 };
 
 } // namespace stb
-} // namespace lvtk
+} // namespace lui

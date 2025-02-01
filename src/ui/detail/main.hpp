@@ -15,7 +15,7 @@
 
 #include "ui/detail/view.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 
 static inline PuglWorldType world_type (Mode mode) {
@@ -32,8 +32,8 @@ static inline PuglWorldFlags world_flags() {
 
 class Main {
 public:
-    Main (lvtk::Main& o, const Mode m, std::unique_ptr<lvtk::Backend> b);
-    std::unique_ptr<lvtk::View> create_view (lvtk::Widget& widget, ViewFlags flags, uintptr_t parent);
+    Main (lui::Main& o, const Mode m, std::unique_ptr<lui::Backend> b);
+    std::unique_ptr<lui::View> create_view (lui::Widget& widget, ViewFlags flags, uintptr_t parent);
 
     bool running() const noexcept {
         return first_loop_called
@@ -44,16 +44,16 @@ public:
     bool loop (double timeout);
 
 private:
-    friend class lvtk::Main;
-    friend class lvtk::View;
+    friend class lui::Main;
+    friend class lui::View;
     friend class detail::View;
 
-    lvtk::Main& owner;
+    lui::Main& owner;
     const Mode mode;
     PuglWorld* world { nullptr };
-    std::unique_ptr<lvtk::Backend> backend;
-    std::vector<lvtk::View*> views;
-    std::unique_ptr<lvtk::Style> style;
+    std::unique_ptr<lui::Backend> backend;
+    std::vector<lui::View*> views;
+    std::unique_ptr<lui::Style> style;
     bool quit_flag { false };
     std::atomic<int> exit_code { 0 };
 
@@ -62,4 +62,4 @@ private:
 };
 
 } // namespace detail
-} // namespace lvtk
+} // namespace lui

@@ -5,7 +5,7 @@
 #include "buttons.hpp"
 #include "embedding.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace demo {
 
 extern std::unique_ptr<Widget> create_entry_demo();
@@ -97,4 +97,4 @@ void Content::run_demo (int index) {
 }
 
 } // namespace demo
-} // namespace lvtk
+} // namespace lui

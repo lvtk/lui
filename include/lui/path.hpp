@@ -7,7 +7,7 @@
 
 #include <lui/rectangle.hpp>
 
-namespace lvtk {
+namespace lui {
 
 /** A type of operation used when processing path data
     @ingroup graphics
@@ -300,4 +300,4 @@ inline static Pth&& rounded_rect (Pth&& po, const float x, const float y,
 }
 
 } // namespace graphics
-} // namespace lvtk
+} // namespace lui

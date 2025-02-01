@@ -20,7 +20,7 @@ Example
 
     #include <lui/dynmanifest.hpp>
 
-    class MyManifest : public lvtk::DynManifest {
+    class MyManifest : public lui::DynManifest {
     public:
         bool get_subjects (std::stringstream& lines) override {
             lines << "@prefix doap:  <http://usefulinc.com/ns/doap#> . " << std::endl

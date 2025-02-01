@@ -5,9 +5,9 @@
     Writing an LV2 UI
 
     UI Descriptors are registered on the stack at the global scope. First
-    make a sublcass of @ref lvtk::UI, then register it with @ref lvtk::UIDescriptor.
+    make a sublcass of @ref lui::UI, then register it with @ref lui::UIDescriptor.
 
-    @see lvtk::UI
+    @see lui::UI
  */
 
 #pragma once
@@ -25,7 +25,7 @@
 #include <lv2/ui/ui.h>
 #include <lui/lui.hpp>
 
-namespace lvtk {
+namespace lui {
 /** Vector of LV2UI_Descriptor's
     @headerfile lvtk/ui.hpp
     @ingroup ui
@@ -272,14 +272,14 @@ private:
     }
 };
 
-} // namespace lvtk
+} // namespace lui
 
 extern "C" {
 
 #ifndef LUI_NO_SYMBOL_EXPORT
 LV2_SYMBOL_EXPORT const LV2UI_Descriptor* lv2ui_descriptor (uint32_t index) {
-    return (index < lvtk::ui_descriptors().size())
-               ? &lvtk::ui_descriptors()[index]
+    return (index < lui::ui_descriptors().size())
+               ? &lui::ui_descriptors()[index]
                : NULL;
 }
 #endif

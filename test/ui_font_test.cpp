@@ -8,7 +8,7 @@
 BOOST_AUTO_TEST_SUITE (Font)
 
 BOOST_AUTO_TEST_CASE (styles) {
-    using Font = lvtk::Font;
+    using Font = lui::Font;
 
     auto f = Font();
     BOOST_REQUIRE_EQUAL (f.normal(), true);

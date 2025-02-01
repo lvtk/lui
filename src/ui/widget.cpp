@@ -12,7 +12,7 @@
 #include "ui/detail/view.hpp"
 #include "ui/detail/widget.hpp"
 
-namespace lvtk {
+namespace lui {
 
 namespace detail {
 void Widget::grab_focus() {
@@ -92,7 +92,7 @@ void Widget::notify_moved_resized (bool was_moved, bool was_resized) {
     };
 }
 
-bool Widget::clip_widgets_blocking (const lvtk::Widget& w,
+bool Widget::clip_widgets_blocking (const lui::Widget& w,
                                     Graphics& g,
                                     const Rectangle<int> cr,
                                     Point<int> delta) {
@@ -121,12 +121,12 @@ bool Widget::clip_widgets_blocking (const lvtk::Widget& w,
     return nclips > 0;
 }
 
-void Widget::render_child (lvtk::Widget& cw, Graphics& g) {
+void Widget::render_child (lui::Widget& cw, Graphics& g) {
     g.translate (cw.pos());
     cw.render (g);
 }
 
-void Widget::render_all (lvtk::Widget& widget, Graphics& g) {
+void Widget::render_all (lui::Widget& widget, Graphics& g) {
     auto& impl = *widget.impl;
     auto cb    = g.last_clip();
 
@@ -409,4 +409,4 @@ bool Widget::contains (Point<float> pt) const noexcept {
     return impl->bounds.at (0, 0).as<float>().contains (pt);
 }
 
-} // namespace lvtk
+} // namespace lui

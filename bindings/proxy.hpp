@@ -6,7 +6,7 @@
 #include <lui/widget.hpp>
 #include <sol/sol.hpp>
 
-namespace lvtk {
+namespace lui {
 // proxies are needed to simulate class inherritence
 // going from c++ to lua. lua to c++ inheritence not
 // supported.... although it probably is possible.
@@ -59,7 +59,7 @@ public:
 };
 
 //==
-class Widget : public lvtk::Widget,
+class Widget : public lui::Widget,
                public proxy::Object {
 public:
     ~Widget();
@@ -81,8 +81,8 @@ public:
     sol::table add (const sol::object& child);
     sol::table bounds_table();
 
-    lvtk::Bounds proxy_get_bounds() const {
-        return lvtk::Widget::bounds();
+    lui::Bounds proxy_get_bounds() const {
+        return lui::Widget::bounds();
     }
 
     void proxy_set_bounds (sol::object obj) {
@@ -122,7 +122,7 @@ bool Widget::obstructed (int x, int y) {
     if (sol::safe_function f = widget["obstructed"]) {
         return (bool) f (widget, x, y);
     }
-    return lvtk::Widget::obstructed (x, y);
+    return lui::Widget::obstructed (x, y);
 }
 
 void Widget::paint (Graphics& g) {
@@ -149,7 +149,7 @@ void Widget::released (const Event& ev) {
 sol::table Widget::add_with_z (const sol::object& child, int zorder) {
     (void) zorder; /// not used yet
     if (auto* const impl = proxy::userdata<proxy::Widget> (child))
-        lvtk::Widget::add (*impl);
+        lui::Widget::add (*impl);
 
     return child;
 }
@@ -170,4 +170,4 @@ sol::table Widget::bounds_table() {
 }
 
 } // namespace proxy
-} // namespace lvtk
+} // namespace lui

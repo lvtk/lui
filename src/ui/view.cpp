@@ -6,11 +6,11 @@
 #include "detail/main.hpp"
 #include "detail/view.hpp"
 
-namespace lvtk {
+namespace lui {
 
 namespace detail {
 
-View::View (lvtk::View& o, lvtk::Main& m, lvtk::Widget& w)
+View::View (lui::View& o, lui::Main& m, lui::Widget& w)
     : owner (o), main (m), widget (w), buttons(), keyboard() {
     view       = puglNewView (m.impl->world);
     pugl_scale = puglGetScaleFactor (view);
@@ -123,4 +123,4 @@ boost::signals2::connection View::connect_idle (const IdleSlot& slot) {
     return impl->sig_idle.connect (slot);
 }
 
-} // namespace lvtk
+} // namespace lui

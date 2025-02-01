@@ -14,7 +14,7 @@
 #    include <sched.h>
 #endif
 
-namespace lvtk {
+namespace lui {
 
 void SpinLock::lock() const noexcept {
     if (try_lock())
@@ -33,4 +33,4 @@ void SpinLock::lock() const noexcept {
     }
 }
 
-} // namespace lvtk
+} // namespace lui

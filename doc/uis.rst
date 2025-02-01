@@ -70,12 +70,12 @@ Descriptor
 ----------
 
 UI descriptors are registered on the stack at the global scope. First
-make a sublcass of :class:`lvtk::UI<MyUI>`, then register it 
-with :class:`lvtk::UIDescriptor`.
+make a sublcass of :class:`lui::UI<MyUI>`, then register it 
+with :class:`lui::UIDescriptor`.
 
 .. code-block:: cpp
 
-    static lvtk::UIDescriptor<MyUI> myui (
+    static lui::UIDescriptor<MyUI> myui (
         "http://myplugin/uri/ui",  //< MyUI's URI String
         {
             LV2_URID__map,      //< List of required host features
@@ -98,10 +98,10 @@ Example without Extensions
     #include <lui/plugin.hpp>
     #include <cstring>
 
-    class CopyAudioUI : public lvtk::Plugin<CopyAudioUI>
+    class CopyAudioUI : public lui::Plugin<CopyAudioUI>
     {
     public:
-        CopyAudioUI (const Args& args) : lvtk::UI (args) { }
+        CopyAudioUI (const Args& args) : lui::UI (args) { }
 
         LV2UI_Widget widget (uint32_t port, void* data) {
             // pseudo widget creation code.

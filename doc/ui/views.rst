@@ -20,7 +20,7 @@ It also makes it possible for client code to only have to do two things
 memory management-wise:
 
 1) Ensure all Widgets get deleted.  Using them on the stack is recommended.
-2) Ensure lvtk::Main stays alive until all Widgets are deleted.
+2) Ensure lui::Main stays alive until all Widgets are deleted.
 
 *****
 Types

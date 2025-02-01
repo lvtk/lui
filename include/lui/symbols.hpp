@@ -12,7 +12,7 @@
 
 #include <lui/lui.h>
 
-namespace lvtk {
+namespace lui {
 
 /** Maintains a map of Strings/Symbols to integers
     
@@ -165,4 +165,4 @@ private:
     LUI_DISABLE_COPY (Symbols)
 };
 
-} // namespace lvtk
+} // namespace lui

@@ -6,7 +6,7 @@
 #include <lui/path.hpp>
 #include <lui/slider.hpp>
 
-namespace lvtk {
+namespace lui {
 
 namespace detail {
 
@@ -16,7 +16,7 @@ static inline T limit (const T& v, const T& a, const T& b) {
 }
 
 // prototype dial draw function.  Eventually nees to move to style class.
-inline static void draw_dial_proto (Graphics& g, lvtk::Dial& dial, Rectangle<double> r) {
+inline static void draw_dial_proto (Graphics& g, lui::Dial& dial, Rectangle<double> r) {
     const auto radius    = std::min (r.width / 2, r.height / 2) - 2.0;
     const float center_x = r.x + r.width * 0.5;
     const float center_y = r.y + r.height * 0.5;
@@ -79,20 +79,20 @@ inline static void draw_dial_proto (Graphics& g, lvtk::Dial& dial, Rectangle<dou
 
 class Ranged {
 public:
-    Ranged (lvtk::Ranged& o) : owner (o) {}
+    Ranged (lui::Ranged& o) : owner (o) {}
 
 private:
-    friend class lvtk::Ranged;
-    lvtk::Ranged& owner;
+    friend class lui::Ranged;
+    lui::Ranged& owner;
     Range<double> range;
     double value = 0.0;
 };
 
 class Slider {
 public:
-    using Type = lvtk::Slider::Type;
+    using Type = lui::Slider::Type;
 
-    Slider (lvtk::Slider& o) : owner (o) {
+    Slider (lui::Slider& o) : owner (o) {
     }
 
     void paint (Graphics& g) {
@@ -152,8 +152,8 @@ public:
     }
 
 private:
-    friend class lvtk::Slider;
-    lvtk::Slider& owner;
+    friend class lui::Slider;
+    lui::Slider& owner;
     float divider = 0.f;
     Type type { Type::VERTICAL_BAR };
 };
@@ -256,4 +256,4 @@ void Dial::drag (const Event& ev) {
     }
 }
 
-} // namespace lvtk
+} // namespace lui

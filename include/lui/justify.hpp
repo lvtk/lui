@@ -6,7 +6,7 @@
 #include <cstdint> // for uint8_t
 #include <utility> // for std::move
 
-namespace lvtk {
+namespace lui {
 
 /** A utility class to help aligning text within its container. This is similar
     to Fitment, but does not imply any kind of scale-to-fit logic.
@@ -73,4 +73,4 @@ private:
     uint8_t _flags = 0;
 };
 
-} // namespace lvtk
+} // namespace lui

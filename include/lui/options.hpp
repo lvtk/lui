@@ -12,7 +12,7 @@
 #include <lv2/options/options.h>
 #include <lui/ext/options.hpp>
 
-namespace lvtk {
+namespace lui {
 
 /** An array of Options
 
@@ -157,4 +157,4 @@ private:
     Option* opts   = nullptr;
 };
 
-} // namespace lvtk
+} // namespace lui

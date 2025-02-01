@@ -9,7 +9,7 @@
 #include <lui/graphics.hpp>
 #include <lui/vulkan.hpp>
 
-namespace lvtk {
+namespace lui {
 
 class VulkanContext : public DrawingContext {
     VkvgDevice _device { nullptr };
@@ -37,7 +37,7 @@ public:
     // start a frame
     // @param frame The View size @ x=0, y=0
     // @param bounds the clip region
-    bool begin_frame (lvtk::Bounds frame, lvtk::Bounds bounds) {
+    bool begin_frame (lui::Bounds frame, lui::Bounds bounds) {
         state = {};
         stack.clear();
 
@@ -81,7 +81,7 @@ public:
 
     double device_scale() const noexcept override {
         double x_scale = 1.0, y_scale = 1.0;
-        lvtk::ignore (x_scale, y_scale);
+        lui::ignore (x_scale, y_scale);
         // TODO:
         // if (auto s = vkvg_get_target (vr))
         //     vkvg_surface_get_device_scale (s, &x_scale, &y_scale);
@@ -290,7 +290,7 @@ public:
 
 private:
     struct State {
-        lvtk::Color color;
+        lui::Color color;
         Rectangle<double> clip;
         Font font;
 
@@ -374,4 +374,4 @@ std::unique_ptr<View> Vulkan::create_view (Main& c, Widget& w) {
     return std::make_unique<VkvgView> (c, w);
 }
 
-} // namespace lvtk
+} // namespace lui

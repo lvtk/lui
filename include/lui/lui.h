@@ -79,6 +79,6 @@ extern "C" {
 namespace lui {
 template <typename... T>
 inline static void ignore (T&&...) noexcept {}
-} // namespace lvtk
+} // namespace lui
 
 #endif

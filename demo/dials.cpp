@@ -6,7 +6,7 @@
 #include "demo.hpp"
 #include "utils.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace demo {
 
 class Dials : public DemoWidget {
@@ -118,4 +118,4 @@ std::unique_ptr<Widget> create_dials_demo() {
 }
 
 } // namespace demo
-} // namespace lvtk
+} // namespace lui

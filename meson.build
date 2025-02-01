@@ -26,13 +26,6 @@ build_number = run_command (python3_exe,
 
 lui_abi_version = '0.0'
 
-# headers = files ('''
-#     include/lvtk/lvtk.hpp
-#     include/lvtk/string.hpp
-#     include/lvtk/ui/justify.hpp
-#     include/lvtk/ui/widget.hpp
-# '''.split())
-
 subdir ('meson/deps')
 subdir ('meson/supress')
 

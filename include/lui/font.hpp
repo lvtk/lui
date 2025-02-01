@@ -9,7 +9,7 @@
 
 #include <lui/lui.h>
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 class Font;
 }
@@ -110,4 +110,4 @@ private:
     std::shared_ptr<detail::Font> impl;
 };
 
-} // namespace lvtk
+} // namespace lui

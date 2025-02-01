@@ -5,7 +5,7 @@
 
 #include "stb/image.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 static inline bool pixels_valid (const Pixels& pix) {
     return pix.format() != PixelFormat::INVALID && pix.height() > 0 && pix.width() > 0 && pix.stride() > 0;
@@ -34,6 +34,6 @@ bool Image::valid() const noexcept {
     return _pixels != nullptr;
 }
 
-} // namespace lvtk
+} // namespace lui
 
 #include "stb/image.ipp"

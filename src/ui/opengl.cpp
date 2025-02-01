@@ -8,13 +8,13 @@
 #include <lui/opengl.hpp>
 
 #include <iostream>
-namespace lvtk {
+namespace lui {
 
 using OpenGLContext = nvg::Context;
 
 /** Surf template param must be an OpenGLView of some kind */
 template <class Ctx>
-class OpenGLView : public lvtk::View {
+class OpenGLView : public lui::View {
 public:
     using context_type = Ctx;
 
@@ -23,7 +23,7 @@ public:
         @param widget  The widget being elevated that will own this view;
      */
     OpenGLView (Main& context, Widget& widget)
-        : lvtk::View (context, widget) {
+        : lui::View (context, widget) {
         set_backend ((uintptr_t) puglGlBackend());
 #if defined(NANOVG_GL3)
         set_view_hint (PUGL_CONTEXT_VERSION_MAJOR, 3);
@@ -94,4 +94,4 @@ std::unique_ptr<View> OpenGL::create_view (Main& c, Widget& w) {
     return std::make_unique<OpenGLView<OpenGLContext>> (c, w);
 }
 
-} // namespace lvtk
+} // namespace lui

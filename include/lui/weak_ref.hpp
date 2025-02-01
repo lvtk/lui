@@ -7,7 +7,7 @@
 #include <memory>
 #include <utility>
 
-namespace lvtk {
+namespace lui {
 
 /** Status of a weak-referenced object.
     Used by WeakRef to monitor deleted pointers.
@@ -149,12 +149,12 @@ private:
     WeakStatus<Obj> _status;
 };
 
-} // namespace lvtk
+} // namespace lui
 
 #define LUI_WEAK_REFABLE_WITH_MEMBER(klass, member)               \
-    friend class lvtk::WeakRef<klass>;                             \
-    lvtk::WeakStatus<klass> member;                                \
-    static lvtk::WeakStatus<klass> lui_weak_status (klass* obj) { \
+    friend class lui::WeakRef<klass>;                             \
+    lui::WeakStatus<klass> member;                                \
+    static lui::WeakStatus<klass> lui_weak_status (klass* obj) { \
         return obj->member;                                        \
     }
 

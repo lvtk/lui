@@ -7,7 +7,7 @@
 
 #include <lui/string.hpp>
 
-namespace lvtk {
+namespace lui {
 
 /** A point. x y coordinate.
     @ingroup graphics
@@ -79,4 +79,4 @@ struct Point {
     }
 };
 
-} // namespace lvtk
+} // namespace lui

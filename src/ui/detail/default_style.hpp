@@ -7,7 +7,7 @@
 #include <lui/slider.hpp>
 #include <lui/style.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 
 class DefaultStyle : public Style {
@@ -31,7 +31,7 @@ public:
 
     ~DefaultStyle() {}
 
-    void draw_button_shape (Graphics& g, lvtk::Button& w, bool highlight, bool down) override {
+    void draw_button_shape (Graphics& g, lui::Button& w, bool highlight, bool down) override {
         auto bc = w.toggled() ? find_color (ColorID::BUTTON_ON) : find_color (ColorID::BUTTON_BASE);
         if (! w.toggled() && (highlight || down)) {
             if (! down)
@@ -54,7 +54,7 @@ public:
         g.draw_rounded_rect (r, cs);
     }
 
-    void draw_button_text (Graphics& g, lvtk::TextButton& w, bool highlight, bool down) override {
+    void draw_button_text (Graphics& g, lui::TextButton& w, bool highlight, bool down) override {
         auto c = find_color (w.toggled() ? ColorID::BUTTON_TEXT_ON : ColorID::BUTTON_TEXT_OFF);
         if (! w.toggled() && (highlight || down))
             c = c.brighter (0.05f);
@@ -68,12 +68,12 @@ public:
         g.draw_text (w.text(), r, Justify::CENTERED);
     }
 
-    void draw_slider (Graphics& g, lvtk::Slider& slider, Bounds bounds, float pos) override {
+    void draw_slider (Graphics& g, lui::Slider& slider, Bounds bounds, float pos) override {
         auto r = bounds.as<float>();
 
         switch (slider.type()) {
-            case lvtk::Slider::HORIZONTAL_BAR:
-            case lvtk::Slider::VERTICAL_BAR: {
+            case lui::Slider::HORIZONTAL_BAR:
+            case lui::Slider::VERTICAL_BAR: {
                 g.set_color (find_color (ColorID::SLIDER_BASE));
                 g.fill_rect (r);
 
@@ -88,8 +88,8 @@ public:
                 break;
             }
 
-            case lvtk::Slider::HORIZONTAL:
-            case lvtk::Slider::VERTICAL: {
+            case lui::Slider::HORIZONTAL:
+            case lui::Slider::VERTICAL: {
                 g.save();
                 draw_slider_background (g, slider, bounds, pos);
                 g.restore();
@@ -99,7 +99,7 @@ public:
         }
     }
 
-    void draw_slider_background (Graphics& g, lvtk::Slider& slider, Bounds bounds, float pos) override {
+    void draw_slider_background (Graphics& g, lui::Slider& slider, Bounds bounds, float pos) override {
         (void) pos;
 
         int track_size = 4;
@@ -114,7 +114,7 @@ public:
         g.fill_rect (bounds);
     }
 
-    void draw_slider_thumb (Graphics& g, lvtk::Slider& slider, Bounds bounds, float pos) override {
+    void draw_slider_thumb (Graphics& g, lui::Slider& slider, Bounds bounds, float pos) override {
         float thumb_size  = 16.f;
         float corner_size = 6.f;
         float x = 0.f, y = 0.f;
@@ -138,4 +138,4 @@ public:
 };
 
 } // namespace detail
-} // namespace lvtk
+} // namespace lui

@@ -8,12 +8,12 @@
 
 #include <iostream>
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 
 class Embed {
 public:
-    class Proxy : public lvtk::Widget {
+    class Proxy : public lui::Widget {
     public:
         Proxy() {}
         ~Proxy() {}
@@ -57,7 +57,7 @@ public:
         }
     }
 
-    inline lvtk::View* proxy_view() const noexcept {
+    inline lui::View* proxy_view() const noexcept {
         return proxy != nullptr ? proxy->find_view() : nullptr;
     }
 
@@ -75,15 +75,15 @@ public:
     }
 
 protected:
-    Embed (lvtk::Embed& o) : owner (o) {}
-    lvtk::Embed& owner;
+    Embed (lui::Embed& o) : owner (o) {}
+    lui::Embed& owner;
     std::unique_ptr<Proxy> proxy;
 
 private:
-    friend class lvtk::Embed;
+    friend class lui::Embed;
     /** @internal Platform specific factory function. */
-    static std::unique_ptr<detail::Embed> create (lvtk::Embed&);
+    static std::unique_ptr<detail::Embed> create (lui::Embed&);
 };
 
 } // namespace detail
-} // namespace lvtk
+} // namespace lui

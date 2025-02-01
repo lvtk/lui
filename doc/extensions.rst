@@ -57,14 +57,14 @@ BufSize
 
 Use this extension to aquire buffer information from the host. It will add a
 :func:`buffer_details` method to your Plugin.  The return value is a 
-:class:`lvtk::BufferDetails` object containing information about minimum
+:class:`lui::BufferDetails` object containing information about minimum
 block length, maximum block length, nominal block length, and sequence size.
 
 .. code-block:: cpp
 
-    class MyPlug : public lvtk::Plugin<MyPlug, lvtk::BufSize> {
+    class MyPlug : public lui::Plugin<MyPlug, lui::BufSize> {
     public:
-        MyPlug (lvtk::Args& args) : lvtk::Plugin (args) {
+        MyPlug (lui::Args& args) : lui::Plugin (args) {
             const auto& details = buffer_details();
 
             // setup plugin using details. members are optional
@@ -80,7 +80,7 @@ block length, maximum block length, nominal block length, and sequence size.
 
 **Direct Usage**
 
-You can also use :class:`lvtk::BufferDetails` directly if your plugin doesn't
+You can also use :class:`lui::BufferDetails` directly if your plugin doesn't
 use LVTK base templates.  It works hand-in-hand with URID Map and LV2 Options.
 
 .. code-block:: cpp
@@ -88,7 +88,7 @@ use LVTK base templates.  It works hand-in-hand with URID Map and LV2 Options.
     const LV2_Feature* map = find_map_feature (host_features);
     const LV2_Feature* options = find_options_feature (host_features);
     if (map && options) {
-        lvtk::BufferDetails details;
+        lui::BufferDetails details;
         details.apply_options (map, options);
         // do something with buffer details
     }
@@ -127,9 +127,9 @@ Use this extension in a UI to get extension data from a plugin. It will add a
 
 .. code-block:: cpp
 
-    class MyUI : public lvtk::UI<MyUI, lvtk::DataAccess> {
+    class MyUI : public lui::UI<MyUI, lui::DataAccess> {
     public:
-        MyUI (lvtk::UIArgs& args) : lvtk::UI (args) {
+        MyUI (lui::UIArgs& args) : lui::UI (args) {
             if (const void* plugin_data = data_access ("http://theplugin/feature#data"))
                 handle_plugin_data (plugin_data);
         }
@@ -137,13 +137,13 @@ Use this extension in a UI to get extension data from a plugin. It will add a
 
 **Direct Usage**
 
-You can also use :class:`lvtk::ExtensionData` directly if your UI doesn't
+You can also use :class:`lui::ExtensionData` directly if your UI doesn't
 use LVTK base templates.
 
 .. code-block:: cpp
 
     if (const LV2_Feature* feature = find_data_access_feature (host_features)) {
-        lvtk::ExtensionData ed;
+        lui::ExtensionData ed;
         if (ed.set (feature))
             if (const void* plugin_data = ed.data_access ("http://theplugin/feature#data"))
                 handle_plugin_data (plugin_data);
@@ -179,14 +179,14 @@ Instance Access
 
 Use this extension in a UI to get the plugin instance handle. It will add a
 :func:`plugin_instance` method to your Plugin.  The return value is 
-``lvtk::Handle`` and can be nullptr if not supported.
+``lui::Handle`` and can be nullptr if not supported.
 
 .. code-block:: cpp
 
-    class MyUI : public lvtk::UI<MyUI, lvtk::InstanceAccess> {
+    class MyUI : public lui::UI<MyUI, lui::InstanceAccess> {
     public:
-        MyUI (lvtk::UIArgs& args) : lvtk::UI (args) {
-            if (lvtk::Handle instance = plugin_instance())
+        MyUI (lui::UIArgs& args) : lui::UI (args) {
+            if (lui::Handle instance = plugin_instance())
                 handle_plugin_data (plugin_data);
         }
     };
@@ -199,9 +199,9 @@ use LVTK base templates.
 .. code-block:: cpp
 
     if (const LV2_Feature* feature = find_instance_feature (host_features)) {
-        lvtk::InstanceHandle handle;
+        lui::InstanceHandle handle;
         if (handle.set (feature))
-            if (lvtk::Handle instance = handle.get())
+            if (lui::Handle instance = handle.get())
                 process_instance_handle (instance);
     }
 
@@ -239,9 +239,9 @@ Use this extension in a plugin or UI to log messages. It will add a
 
 .. code-block:: cpp
 
-    class MyPlug : public lvtk::Plugin<MyPlug, lvtk::Log> {
+    class MyPlug : public lui::Plugin<MyPlug, lui::Log> {
     public:
-        MyPlug (lvtk::Args& args) : lvtk::Plugin (args) {
+        MyPlug (lui::Args& args) : lui::Plugin (args) {
             uint32_t trace_urid = map_trace_urid();
             auto& log = logger();
             log.printf (trace_urid, "Hello world!");
@@ -258,7 +258,7 @@ use LVTK base templates.
 
 .. code-block:: cpp
 
-    lvtk::Logger logger;
+    lui::Logger logger;
     logger.set (find_log_feature (host_features));
     logger << "Hello world!";
 
@@ -308,10 +308,10 @@ Use this extension in a plugin or UI to utilize LV2 Options. It will add a
 
 .. code-block:: cpp
 
-    class MyPlug : public lvtk::Plugin<MyPlug, lvtk::Options> {
+    class MyPlug : public lui::Plugin<MyPlug, lui::Options> {
     public:
-        MyPlug (lvtk::Args& args) : lvtk::Plugin (args) {
-            lvtk::OptionArray opts (options());
+        MyPlug (lui::Args& args) : lui::Plugin (args) {
+            lui::OptionArray opts (options());
             for (const auto& opt : opts) {
                 // handle option
             }
@@ -383,9 +383,9 @@ values.
 
 .. code-block:: cpp
 
-    class MyPlug : public lvtk::Plugin<MyPlug, lvtk::Options> {
+    class MyPlug : public lui::Plugin<MyPlug, lui::Options> {
     public:
-        MyPlug (lvtk::Args& args) : lvtk::Plugin (args) {
+        MyPlug (lui::Args& args) : lui::Plugin (args) {
             // initialization ....
         }
 
@@ -440,9 +440,9 @@ or :class:`lvtk.StateRetrive` function object to read/write key/pairs.
 
 .. code-block:: cpp
 
-    class MyPlug : public lvtk::Plugin<MyPlug, lvtk::State, lvtk::URID> {
+    class MyPlug : public lui::Plugin<MyPlug, lui::State, lui::URID> {
     public:
-        MyPlug (lvtk::Args& args) : lvtk::Plugin (args) {
+        MyPlug (lui::Args& args) : lui::Plugin (args) {
             custom_property_key = map_uri (custom_property_key_uri);
             string_type = map_uri (LV2_ATOM__String);
         }
@@ -522,9 +522,9 @@ values are either a mapped URID uint, or an unmapped std::string.
 
 .. code-block:: cpp
 
-    class MyPlug : public lvtk::Plugin<MyPlug, lvtk::Options> {
+    class MyPlug : public lui::Plugin<MyPlug, lui::Options> {
     public:
-        MyPlug (lvtk::Args& args) : lvtk::Plugin (args) {
+        MyPlug (lui::Args& args) : lui::Plugin (args) {
             uint32_t a_urid = map_uri ("http://auri-to.com#map");
             std::clog << unmap_urid (a_urid);
         }
@@ -572,9 +572,9 @@ values.
 
 .. code-block:: cpp
 
-    class WorkHorse : public lvtk::Plugin<WorkHorse, lvtk::Worker> {
+    class WorkHorse : public lui::Plugin<WorkHorse, lui::Worker> {
     public:
-        WorkHorse (const lvtk::Args& args) : lvtk::Plugin (args) {}
+        WorkHorse (const lui::Args& args) : lui::Plugin (args) {}
 
         void run (uint32_t nframes) {
             // Offload some non-realtime work.
@@ -646,9 +646,9 @@ to drive your UI.  Return non-zero to stop receiving callbacks.
 
 .. code-block:: cpp
 
-    class MyUI : public lvtk::UI<MyUI, lvtk::Idle> {
+    class MyUI : public lui::UI<MyUI, lui::Idle> {
     public:
-        MyUI (const lvtk::UIArgs& args) : lvtk::UI (args) {
+        MyUI (const lui::UIArgs& args) : lui::UI (args) {
         }
 
          int idle() {
@@ -684,9 +684,9 @@ It is a function object and also has a bool() operator, so....
 
 .. code-block:: cpp
 
-    class MyUI : public lvtk::UI<MyUI, lvtk::Parent> {
+    class MyUI : public lui::UI<MyUI, lui::Parent> {
     public:
-        MyUI (const lvtk::UIArgs& args) : lvtk::UI (args) {
+        MyUI (const lui::UIArgs& args) : lui::UI (args) {
             // ... Inside your UI's constructor ....
 
             if (parent) {
@@ -725,9 +725,9 @@ from it's symbol.
 
 .. code-block:: cpp
 
-    class MyUI : public lvtk::UI<MyUI, lvtk::PortMap> {
+    class MyUI : public lui::UI<MyUI, lui::PortMap> {
     public:
-        MyUI (const lvtk::UIArgs& args) : lvtk::UI (args) {
+        MyUI (const lui::UIArgs& args) : lui::UI (args) {
             auto audio_port_1_index = port_map ("audio_01");
             // use the index how you see fit.
         }
@@ -768,9 +768,9 @@ to start or stop receiving notifications about ports in ``port_event``.
 
 .. code-block:: cpp
 
-    class MyUI : public lvtk::UI<MyUI, lvtk::PortSubscribe> {
+    class MyUI : public lui::UI<MyUI, lui::PortSubscribe> {
     public:
-        MyUI (const lvtk::UIArgs& args) : lvtk::UI (args) {
+        MyUI (const lui::UIArgs& args) : lui::UI (args) {
             subscribe (port_index, protocol, subscribe_features);
         }
 
@@ -810,9 +810,9 @@ Adds :func:`show` and :func:`hide` callbacks to your UI.  It inherrits from
 
 .. code-block:: cpp
 
-    class MyUI : public lvtk::UI<MyUI, lvtk::Show> {
+    class MyUI : public lui::UI<MyUI, lui::Show> {
     public:
-        MyUI (const lvtk::UIArgs& args) : lvtk::UI (args) {}
+        MyUI (const lui::UIArgs& args) : lui::UI (args) {}
 
         int show() {
             // host is requesting you show your GUI
@@ -850,9 +850,9 @@ about gesture changes.
 
 .. code-block:: cpp
 
-    class MyUI : public lvtk::UI<MyUI, lvtk::Touch> {
+    class MyUI : public lui::UI<MyUI, lui::Touch> {
     public:
-        MyUI (const lvtk::UIArgs& args) : lvtk::UI (args) {
+        MyUI (const lui::UIArgs& args) : lui::UI (args) {
         }
 
         void send_gesture_change() {

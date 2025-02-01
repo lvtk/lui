@@ -10,11 +10,11 @@
 
 namespace sol {
 #if 0
-/** Support lvtk::WeakRef in sol2. Does not work yet  */
+/** Support lui::WeakRef in sol2. Does not work yet  */
 template <typename T>
-struct unique_usertype_traits<lvtk::WeakRef<T>>
+struct unique_usertype_traits<lui::WeakRef<T>>
 {
-    using type = lvtk::WeakRef<T>;
+    using type = lui::WeakRef<T>;
     using actual_type = T;
     static const bool value = true;
     static bool is_null (const actual_type& ptr) { return ptr == nullptr; }
@@ -24,7 +24,7 @@ struct unique_usertype_traits<lvtk::WeakRef<T>>
 } // namespace sol
 
 using namespace sol;
-using namespace lvtk;
+using namespace lui;
 
 namespace lua {
 
@@ -137,9 +137,9 @@ inline static table
         "set_bounds", 
         overload (
             [] (Wgt& self, double x, double y, double w, double h) { 
-                self.set_bounds (lvtk::Rectangle<double> { x, y, w, h }.as<int>()); 
+                self.set_bounds (lui::Rectangle<double> { x, y, w, h }.as<int>()); 
             }, [](Wgt& self, const object& obj) { 
-                lvtk::proxy::widget_set_bounds (self, obj);
+                lui::proxy::widget_set_bounds (self, obj);
             }),
         "set_size", &Wgt::set_size,
         std::forward<Args> (args)...);
@@ -162,11 +162,11 @@ inline static table
     };
 
     // attribute lookup keys used by lua-side proxy
-    M_mt[lvtk::proxy::props_key] = view.create_table().add (
+    M_mt[lui::proxy::props_key] = view.create_table().add (
         "visible", "bounds");
 
     // class method symbols used by lua-side proxy
-    M_mt[lvtk::proxy::methods_key] = view.create_table().add (
+    M_mt[lui::proxy::methods_key] = view.create_table().add (
         "add",
         "set_bounds",
         "set_size");
@@ -188,7 +188,7 @@ int luaopen_lui_Context (lua_State* L) {
     // This'll need re-done in plain lua if it ever
     // becomes a performance hit in realtime/dsp
     // contexts.
-    auto M = lua::bind<lvtk::Context> (L, "lvtk", "Context",
+    auto M = lua::bind<lui::Context> (L, "lvtk", "Context",
         "symbols", &Context::symbols
     );
 
@@ -204,7 +204,7 @@ int luaopen_lui_Context (lua_State* L) {
 #include <lui/symbols.hpp>
 LUI_LUALIB
 int luaopen_lui_Symbols (lua_State* L) {
-    auto M = lua::bind<lvtk::Symbols> (L, "lvtk", "Symbols",
+    auto M = lua::bind<lui::Symbols> (L, "lvtk", "Symbols",
         "map", [](Symbols& self, const char* uri) -> lua_Integer {
             return static_cast<lua_Integer> (self.map (uri));
         },
@@ -279,14 +279,14 @@ LUI_LUALIB
 int luaopen_lui_Graphics (lua_State* L) {
     static constexpr const char* ns = "lvtk";
     static constexpr const char* name = "Graphics";
-    auto M = lua::bind<lvtk::Graphics> (L, ns, name,
+    auto M = lua::bind<lui::Graphics> (L, ns, name,
         "last_clip", &Graphics::last_clip,
         "translate", &Graphics::translate,
         "save", &Graphics::save,
         "restore", &Graphics::restore,
         "set_color", [](Graphics& self, lua_Integer c) {
-            self.set_color (lvtk::Color (static_cast<uint32_t> (c)));
-            self.set_color (lvtk::Color (0xff0000ff));
+            self.set_color (lui::Color (static_cast<uint32_t> (c)));
+            self.set_color (lui::Color (0xff0000ff));
         },
         "fill_rect", [](Graphics& self, Bounds r) {
                 self.fill_rect (r);
@@ -301,7 +301,7 @@ LUI_LUALIB
 int luaopen_lui_Surface (lua_State* L) {
     static constexpr const char* ns = "lvtk";
     static constexpr const char* name = "DrawingContext";
-    auto M = lua::bind<lvtk::DrawingContext> (L, ns, name,
+    auto M = lua::bind<lui::DrawingContext> (L, ns, name,
         "dummy", []() {}
     );
 
@@ -313,7 +313,7 @@ int luaopen_lui_Surface (lua_State* L) {
 #include <lui/input.hpp>
 LUI_LUALIB
 int luaopen_lui_Event (lua_State* L) {
-    auto T = lua::bind<lvtk::Event> (L, "lvtk", "Event",
+    auto T = lua::bind<lui::Event> (L, "lvtk", "Event",
         "source", readonly_property (&Event::source),
         "pos", readonly_property (&Event::pos),
         "x", readonly_property (&Event::x),
@@ -328,25 +328,25 @@ int luaopen_lui_Event (lua_State* L) {
 #include <lui/main.hpp>
 LUI_LUALIB
 int luaopen_lui_Main (lua_State* L) {
-    auto T = lua::bind<lvtk::Main> (L, "lvtk", "Main",
+    auto T = lua::bind<lui::Main> (L, "lvtk", "Main",
         "loop",     &Main::loop,
         "running",  &Main::running,
-        "elevate", [](lvtk::Main& self, object tbl) {
+        "elevate", [](lui::Main& self, object tbl) {
             // std::clog << "elevate: " << type_name (L, tbl.get_type()) << std::endl;
             // TODO: deeply inspect that this really is a widget
             // if not rais a lua error
             if (tbl.is<table>()) {
-                if (auto proxy = lvtk::proxy::userdata<lvtk::proxy::Widget> ((table)tbl))
+                if (auto proxy = lui::proxy::userdata<lui::proxy::Widget> ((table)tbl))
                     self.elevate (*proxy, 0, 0);
             } else {
                 // std::clog << "not a table: \n";
             }
         },
         
-        "mode", [](lvtk::Main& self) -> std::string {
+        "mode", [](lui::Main& self) -> std::string {
             switch (self.mode()) {
-                case lvtk::Mode::PROGRAM: return "program"; break;
-                case lvtk::Mode::MODULE: return "module"; break;
+                case lui::Mode::PROGRAM: return "program"; break;
+                case lui::Mode::MODULE: return "module"; break;
             };
             return "undefined";
         },
@@ -356,9 +356,9 @@ int luaopen_lui_Main (lua_State* L) {
         "exit_code", &Main::exit_code,
         "symbols",  &Main::symbols,
         "new", factories ([]() {
-            auto obj = std::make_unique<lvtk::Main>(
-                lvtk::Mode::PROGRAM,
-                std::make_unique<lvtk::Cairo>()
+            auto obj = std::make_unique<lui::Main>(
+                lui::Mode::PROGRAM,
+                std::make_unique<lui::Cairo>()
             );
 
             return obj;
@@ -380,7 +380,7 @@ int luaopen_lui_Main (lua_State* L) {
 #include <lui/view.hpp>
 LUI_LUALIB
 int luaopen_lui_View (lua_State* L) {
-    auto T = lua::bind<lvtk::View> (L, "lvtk", "View",
+    auto T = lua::bind<lui::View> (L, "lvtk", "View",
         "visible",  property (&View::visible, &View::set_visible),
         "bounds",       &View::bounds,
         "scale_factor", &View::scale_factor,
@@ -394,7 +394,7 @@ int luaopen_lui_View (lua_State* L) {
 #include <lui/widget.hpp>
 LUI_LUALIB
 int luaopen_lui_Widget (lua_State* L) {
-    using W = lvtk::proxy::Widget;
+    using W = lui::proxy::Widget;
     auto M = lua::bind_widget<W> (L, "Widget", 
         "add",      &W::add
     );
@@ -407,11 +407,11 @@ int luaopen_lui_Widget (lua_State* L) {
 #include <lui/host/world.hpp>
 LUI_LUALIB
 int luaopen_lui_World (lua_State* L) {
-    auto T = lua::bind<lvtk::World> (L, "lvtk", "World",
-        "load_all",         &lvtk::World::load_all,
-        "find",             &lvtk::World::find,
+    auto T = lua::bind<lui::World> (L, "lvtk", "World",
+        "load_all",         &lui::World::load_all,
+        "find",             &lui::World::find,
         "new", factories ([]() {
-            return std::make_unique<lvtk::World>();
+            return std::make_unique<lui::World>();
         })
     );
 
@@ -429,7 +429,7 @@ int luaopen_lui_World (lua_State* L) {
 // need re-written in vanilla lua.
 LUI_LUALIB
 int luaopen_lui_Instance (lua_State* L) {
-    auto T = lua::bind<lvtk::Instance> (L, "lvtk", "Instance",
+    auto T = lua::bind<lui::Instance> (L, "lvtk", "Instance",
         "name",             [](Instance&) {},
         "activate",         [](Instance&) {},
         "connect_port",     [](Instance&) {},
@@ -444,19 +444,19 @@ int luaopen_lui_Instance (lua_State* L) {
 #if 0
 LUI_LUALIB
 int luaopen_lui_InstanceUI (lua_State* L) {
-    auto T = lua::bind<lvtk::InstanceUI> (L, "lvtk", "InstanceUI",
-        "loaded", &lvtk::InstanceUI::loaded,
-        "unload", &lvtk::InstanceUI::unload,
-        "world",  &lvtk::InstanceUI::world,
-        "plugin", &lvtk::InstanceUI::plugin,
-        "widget", [](lvtk::InstanceUI& self) -> lua_Integer {
+    auto T = lua::bind<lui::InstanceUI> (L, "lvtk", "InstanceUI",
+        "loaded", &lui::InstanceUI::loaded,
+        "unload", &lui::InstanceUI::unload,
+        "world",  &lui::InstanceUI::world,
+        "plugin", &lui::InstanceUI::plugin,
+        "widget", [](lui::InstanceUI& self) -> lua_Integer {
             return (lua_Integer) self.widget();
         },
-        "native", &lvtk::InstanceUI::is_native,
-        "is_a", &lvtk::InstanceUI::is_a,
-        "idle", &lvtk::InstanceUI::idle,
-        "show", &lvtk::InstanceUI::show,
-        "hide", &lvtk::InstanceUI::hide
+        "native", &lui::InstanceUI::is_native,
+        "is_a", &lui::InstanceUI::is_a,
+        "idle", &lui::InstanceUI::idle,
+        "show", &lui::InstanceUI::show,
+        "hide", &lui::InstanceUI::hide
     );
 
     stack::push (L, T);

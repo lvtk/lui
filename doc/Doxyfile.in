@@ -9,8 +9,8 @@ WARN_NO_PARAMDOC       = NO
 JAVADOC_AUTOBRIEF      = YES
 
 CASE_SENSE_NAMES       = YES
-EXCLUDE_SYMBOLS        = lvtk::detail \
-                         lvtk::convert
+EXCLUDE_SYMBOLS        = lui::detail \
+                         lui::convert
 EXTRACT_LOCAL_CLASSES  = NO
 EXTRACT_PRIVATE        = YES
 EXTRACT_STATIC         = YES

@@ -13,7 +13,7 @@
 #include <lui/rectangle.hpp>
 #include <lui/transform.hpp>
 
-namespace lvtk {
+namespace lui {
 
 class Path;
 
@@ -264,4 +264,4 @@ private:
     LUI_DISABLE_COPY (Graphics)
 };
 
-} // namespace lvtk
+} // namespace lui

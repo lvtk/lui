@@ -19,7 +19,7 @@
 #include <lui/view.hpp>
 #include <lui/weak_ref.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 /** @private */
 class Widget;
@@ -237,6 +237,6 @@ private:
 
 /** A Weak Reference to a Widget. */
 using WidgetRef = WeakRef<Widget>;
-} // namespace lvtk
+} // namespace lui
 
 /** @} */

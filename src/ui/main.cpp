@@ -15,17 +15,17 @@
 #include "ui/detail/view.hpp"
 #include "ui/detail/widget.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 
-Main::Main (lvtk::Main& o, const Mode m, std::unique_ptr<lvtk::Backend> b)
+Main::Main (lui::Main& o, const Mode m, std::unique_ptr<lui::Backend> b)
     : owner (o),
       mode (m),
       world (puglNewWorld (detail::world_type (m), detail::world_flags())),
       backend (std::move (b)),
       style (std::make_unique<DefaultStyle>()) {}
 
-std::unique_ptr<lvtk::View> Main::create_view (lvtk::Widget& widget, ViewFlags flags, uintptr_t parent) {
+std::unique_ptr<lui::View> Main::create_view (lui::Widget& widget, ViewFlags flags, uintptr_t parent) {
     auto view = backend->create_view (owner, widget);
     if (! view)
         return nullptr;
@@ -35,7 +35,7 @@ std::unique_ptr<lvtk::View> Main::create_view (lvtk::Widget& widget, ViewFlags f
     if (view && parent)
         view->impl->set_parent (parent, transient);
 
-    view->set_view_hint (PUGL_RESIZABLE, (int) (flags & lvtk::View::RESIZABLE));
+    view->set_view_hint (PUGL_RESIZABLE, (int) (flags & lui::View::RESIZABLE));
     // if (flags & ViewFlag::POPUP)
     //     view->set_view_hint (PUGL_VIEW_TYPE, PUGL_POPUP_MENU_VIEW);
 
@@ -112,4 +112,4 @@ void* Main::handle() const noexcept {
 Style& Main::style() noexcept { return *impl->style; }
 const Style& Main::style() const noexcept { return *impl->style; }
 
-} // namespace lvtk
+} // namespace lui

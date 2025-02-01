@@ -7,11 +7,11 @@
 
 #include "ui/detail/pugl.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 class Entry {
 public:
-    Entry (lvtk::Entry& o) : owner (o) {}
+    Entry (lui::Entry& o) : owner (o) {}
 
     void paint (Graphics& g) {
         g.set_color (0x222222ff);
@@ -56,11 +56,11 @@ public:
     }
 
 private:
-    friend class lvtk::Entry;
-    lvtk::Entry& owner;
+    friend class lui::Entry;
+    lui::Entry& owner;
     std::string current_text;
     uint32_t cursor = 0;
-    lvtk::Font font;
+    lui::Font font;
 };
 
 } // namespace detail
@@ -72,4 +72,4 @@ void Entry::pressed (const Event& ev) { grab_focus(); }
 void Entry::paint (Graphics& g) { impl->paint (g); }
 bool Entry::text_entry (const TextEvent& ev) { return impl->text_entry (ev); }
 
-} // namespace lvtk
+} // namespace lui

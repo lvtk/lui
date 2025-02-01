@@ -10,12 +10,12 @@
 
 #include "ui/detail/embed.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 
 class NSViewEmbed : public detail::Embed {
 public:
-    NSViewEmbed (lvtk::Embed& o) : detail::Embed (o) {}
+    NSViewEmbed (lui::Embed& o) : detail::Embed (o) {}
     ~NSViewEmbed() { current_view = nullptr; }
 
 private:
@@ -35,11 +35,11 @@ private:
         NSView* view { nullptr };
     };
 
-    lvtk::View* current_view { nullptr };
+    lui::View* current_view { nullptr };
     std::shared_ptr<Attachment> attachment;
 };
 
-std::unique_ptr<detail::Embed> Embed::create (lvtk::Embed& owner) {
+std::unique_ptr<detail::Embed> Embed::create (lui::Embed& owner) {
     return std::make_unique<detail::NSViewEmbed> (owner);
 }
 

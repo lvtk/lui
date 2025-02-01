@@ -12,7 +12,7 @@
 #include "menu_bar.hpp"
 #include "utils.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace demo {
 
 #define SIDEBAR_WIDTH 200
@@ -131,4 +131,4 @@ private:
 };
 
 } // namespace demo
-} // namespace lvtk
+} // namespace lui

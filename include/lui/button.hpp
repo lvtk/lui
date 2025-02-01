@@ -6,7 +6,7 @@
 #include <functional>
 #include <lui/widget.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 class Button;
 class TextButton;
@@ -16,7 +16,7 @@ class TextButton;
     @ingroup widgets
     @headerfile lvtk/ui/button.hpp
 */
-class LUI_API Button : public lvtk::Widget {
+class LUI_API Button : public lui::Widget {
 public:
     virtual ~Button();
 
@@ -86,4 +86,4 @@ private:
     LUI_DISABLE_COPY (TextButton)
 };
 
-} // namespace lvtk
+} // namespace lui

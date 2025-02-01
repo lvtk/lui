@@ -5,7 +5,7 @@
 
 #include <lui/widget.hpp>
 
-namespace lvtk {
+namespace lui {
 
 namespace detail {
 class Entry;
@@ -36,4 +36,4 @@ private:
     std::unique_ptr<detail::Entry> impl;
 };
 
-} // namespace lvtk
+} // namespace lui

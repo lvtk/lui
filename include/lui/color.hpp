@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <cstdint>
 
-namespace lvtk {
+namespace lui {
 
 /** A 32bit color value.
     The value represented by a uint32_t. e.g. 0xRRGGBBAA
@@ -175,4 +175,4 @@ private:
     }
 };
 
-} // namespace lvtk
+} // namespace lui

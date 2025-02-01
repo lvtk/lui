@@ -5,7 +5,7 @@
 
 #include <vector>
 
-namespace lvtk {
+namespace lui {
 namespace demo {
 
 template <class Wgt>
@@ -17,4 +17,4 @@ static inline void delete_widgets (std::vector<Wgt*>& vec) {
 }
 
 } // namespace demo
-} // namespace lvtk
+} // namespace lui

@@ -7,7 +7,7 @@
 
 #include <lui/lui.h>
 
-namespace lvtk {
+namespace lui {
 
 /** An affine transformation matrix.
   
@@ -73,4 +73,4 @@ public:
     // clang-format on
 };
 
-} // namespace lvtk
+} // namespace lui

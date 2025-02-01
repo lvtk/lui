@@ -8,7 +8,7 @@
 #include <lui/rectangle.hpp>
 #include <lui/transform.hpp>
 
-namespace lvtk {
+namespace lui {
 
 /** Flags to use when fitting a rectangle within another. This is an extension 
     to Justify adding options specific to rectangle scale-to-fit logic. The flag
@@ -83,4 +83,4 @@ private:
     flag_type _flags { CENTERED };
 };
 
-} // namespace lvtk
+} // namespace lui

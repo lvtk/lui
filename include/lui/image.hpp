@@ -9,7 +9,7 @@
 #include <lui/lui.h>
 #include <lui/rectangle.hpp>
 
-namespace lvtk {
+namespace lui {
 
 /** Format for a single pixel. */
 enum class PixelFormat {
@@ -82,4 +82,4 @@ private:
     std::shared_ptr<Pixels> _pixels;
 };
 
-} // namespace lvtk
+} // namespace lui

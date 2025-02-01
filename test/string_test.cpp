@@ -7,12 +7,12 @@
 #define LOREM_IPSUM \
     R"(Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut dolor sed lectus condimentum scelerisque ut at ex. Aenean feugiat velit sodales tempus condimentum. Nam sed neque velit. Nulla pretium ut nulla a placerat. Aliquam erat volutpat. Fusce volutpat, urna ut aliquet finibus, nunc mauris porta lacus, ut lacinia dolor sapien ut enim. Vestibulum quis diam mattis, laoreet augue ut, tincidunt magna. Duis semper sit amet leo gravida semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit.)"
 
-using namespace lvtk;
+using namespace lui;
 
 BOOST_AUTO_TEST_SUITE (String)
 
 BOOST_AUTO_TEST_CASE (ctors) {
-    using lvtk::String;
+    using lui::String;
     auto a = String();
     a      = String ("lv2");
     BOOST_REQUIRE_EQUAL (a, "lv2");
@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE (ctors) {
 }
 
 BOOST_AUTO_TEST_CASE (streams) {
-    using lvtk::String;
+    using lui::String;
     String s1 = "hello";
     BOOST_REQUIRE_EQUAL (s1, "hello");
     s1 << " " << String ("world");

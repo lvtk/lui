@@ -10,7 +10,7 @@
 #include <lui/button.hpp>
 #include <lui/image.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace demo {
 namespace res {
 #include "lv2_logo.png.h"
@@ -134,4 +134,4 @@ std::unique_ptr<Widget> create_images_demo() {
 }
 
 } // namespace demo
-} // namespace lvtk
+} // namespace lui

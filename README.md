@@ -2,29 +2,28 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/lvtk/lvtk/badge)](https://www.codefactor.io/repository/github/lvtk/lvtk)
 [![REUSE status](https://api.reuse.software/badge/gitlab.com/lvtk/lvtk)](https://api.reuse.software/info/gitlab.com/lvtk/lvtk)
 
-# LVTK3
+# Lui
 
-Minimal C++ library with Lua bindings and console. Write your LV2 plugins and gui's in C++.  The Widgets library can be used in any project, it is not directly tied to LV2 UI.
+Minimal C++ Gui library with Lua bindings and console. Write your LV2 plugins and gui's in C++.  The Widgets library can be used in any project, it is not directly tied to LV2 UI.
 
 **Heavy Development:** API's will break from time to time until the core system is ready. Plugin/UI templates are largely unchanged, but could radically change in terms of API.  
 
 ## Minimal by Design
 
-LVTK is intended to be used as a subproject by LV2 plugin and UI developers. Docs, Lua Bindings, the Widgets Demo, Lilv wrapper tests, and the `lvtk.lv2` plugins are disabled by default so plugin developers don't have to worry about it.  If packaging, these items will need enabled manually via a meson native/cross file or the command line. see [meson_options.txt](meson_options.txt)
-
+Lui is intended to be used as a subproject by plugin developers.
 ## Widgets
 
 | Widget            | Status  | Purpose              |
 |-------------------|---------|----------------------|
-| `lvtk.Widget`     | Working | Base for all widgets |
-| `lvtk.Button`     | Close   | Base for most button types |
-| `lvtk.TextButton` | Close   | A regular button that shows text |
-| `lvtk.Label`      | -       | A text display Widget |
-| `lvtk.Entry`      | Started | A basic single-line text entry |
-| `lvtk.Ranged`     | Working | Base for Widgets with a ralue range.
-| `lvtk.Slider`     | Close   | A basic single-value slider control |
-| `lvtk.Dial`       | Started | A basic single-value Dial (or Knob) control |
-| `lvtk.Embed`      | Started | Embed OS Native Windows/Views |
+| `lui.Widget`     | Working | Base for all widgets |
+| `lui.Button`     | Close   | Base for most button types |
+| `lui.TextButton` | Close   | A regular button that shows text |
+| `lui.Label`      | -       | A text display Widget |
+| `lui.Entry`      | Started | A basic single-line text entry |
+| `lui.Ranged`     | Working | Base for Widgets with a ralue range.
+| `lui.Slider`     | Close   | A basic single-value slider control |
+| `lui.Dial`       | Started | A basic single-value Dial (or Knob) control |
+| `lui.Embed`      | Started | Embed OS Native Windows/Views |
 
 **Status Legend**
 
@@ -63,7 +62,7 @@ cd build
 Double-clickable Mac apps can be found somewhere in the build directory. The following command will list them all out.
 ```bash
 # From the source top dir.
-find build -name "LVTK*.app"
+find build -name "LUI*.app"
 ```
 
 ### Screenshots
@@ -100,8 +99,6 @@ Graphics/UI/Hosting classes utilize these libraries internally:
 | Lua          | Lua Bindings      | [MIT](LICENSES/MIT.txt) |
 | Sol2         | Lua Bindings      | [MIT](LICENSES/MIT.txt) |
 | Boost        | Tests/Signals     | [BSL-1.0](https://www.boost.org/LICENSE_1_0.txt) |
-| Lilv         | Test host headers | [ISC](LICENSES/ISC.txt) |
-| Suil         | Test host headers | [ISC](LICENSES/ISC.txt) |
 
 ## Issue Tracking
 

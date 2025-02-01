@@ -3,7 +3,7 @@
 
 #include "ui/detail/embed.hpp"
 
-namespace lvtk {
+namespace lui {
 
 Embed::Embed() {
     impl = detail::Embed::create (*this);
@@ -35,4 +35,4 @@ void Embed::parent_structure_changed() {
     impl->create_proxy_view();
 }
 
-} // namespace lvtk
+} // namespace lui

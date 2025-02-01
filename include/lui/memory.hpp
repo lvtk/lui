@@ -7,7 +7,7 @@
 #include <cstring>
 #include <type_traits>
 
-namespace lvtk {
+namespace lui {
 
 /** Read a chunk of unaligned memory as value T. */
 template <typename T>
@@ -32,4 +32,4 @@ static auto to_chars (Val value) {
     return result;
 }
 
-} // namespace lvtk
+} // namespace lui

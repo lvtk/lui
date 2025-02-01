@@ -76,12 +76,12 @@ Descriptor
 ----------
 
 Plugin descriptors are registered on the stack at the global scope. First
-make a sublcass of :class:`lvtk::Plugin <plugin>`, then register it 
-with :class:`lvtk::Descriptor`.
+make a sublcass of :class:`lui::Plugin <plugin>`, then register it 
+with :class:`lui::Descriptor`.
 
 .. code-block:: cpp
 
-    static lvtk::Descriptor<MyPlugin> my_plugin (
+    static lui::Descriptor<MyPlugin> my_plugin (
         "http://myplugin/uri",  //< MyPlugin's URI String
         {
             LV2_URID__map,      //< List of required host features
@@ -104,10 +104,10 @@ Example without Extensions
     #include <lui/plugin.hpp>
     #include <cstring>
 
-    class CopyAudio : public lvtk::Plugin<CopyAudio>
+    class CopyAudio : public lui::Plugin<CopyAudio>
     {
     public:
-        CopyAudio (const Args& args) : lvtk::Plugin (args) { }
+        CopyAudio (const Args& args) : lui::Plugin (args) { }
 
         void connect_port (uint32_t port, void* data) {
             audio[port] = data;
@@ -134,10 +134,10 @@ Example with Extension
 
     #include <cstring>
 
-    class CopyAudio : public lvtk::Plugin<CopyAudio, lvtk::Log>
+    class CopyAudio : public lui::Plugin<CopyAudio, lui::Log>
     {
     public:
-        CopyAudio (const Args& args) : lvtk::Plugin (args) { }
+        CopyAudio (const Args& args) : lui::Plugin (args) { }
 
         void activate() {
             auto& log = logger();
@@ -162,4 +162,4 @@ Example with Extension
     };
 
     // Register a descriptor for this plugin type
-    static lvtk::Descriptor<CopyAudio> copyaudio ("https://lvtk.org/plugins/CopyAudioWithLogger");
+    static lui::Descriptor<CopyAudio> copyaudio ("https://lvtk.org/plugins/CopyAudioWithLogger");

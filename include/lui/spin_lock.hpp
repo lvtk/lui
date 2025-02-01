@@ -7,7 +7,7 @@
 
 #include <lui/lui.h>
 
-namespace lvtk {
+namespace lui {
 
 /** A simple spin lock using std::atomic.
     
@@ -40,4 +40,4 @@ private:
     LUI_DISABLE_COPY (SpinLock)
 };
 
-} // namespace lvtk
+} // namespace lui

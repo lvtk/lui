@@ -6,7 +6,7 @@
 #include <lui/lui.hpp>
 #include <lui/rectangle.hpp>
 
-namespace lvtk {
+namespace lui {
 
 struct LUI_API Display {
     bool primary { false };
@@ -14,4 +14,4 @@ struct LUI_API Display {
     double dpi { 96.0 };
 };
 
-} // namespace lvtk
+} // namespace lui

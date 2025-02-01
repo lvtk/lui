@@ -35,7 +35,7 @@
 // #define VIEW_DBG4(x) std::clog << "[view] " << x << std::endl;
 #define VIEW_DBG4(x)
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 template <typename Tp, class Ev>
 static inline Point<Tp> point (const Ev& ev) {
@@ -74,9 +74,9 @@ inline static void erase (std::vector<Obj*>& views, Obj* view) {
 
 namespace input {
 
-static Event event (lvtk::Main& m,
-                    lvtk::Widget& src,
-                    lvtk::Widget& tgt,
+static Event event (lui::Main& m,
+                    lui::Widget& src,
+                    lui::Widget& tgt,
                     Modifier mods,
                     Point<float> pos,
                     int num_clicks) {
@@ -88,16 +88,16 @@ static Event event (lvtk::Main& m,
              num_clicks };
 }
 
-static Event event (lvtk::Main& m,
-                    lvtk::Widget& src,
-                    lvtk::Widget& tgt,
+static Event event (lui::Main& m,
+                    lui::Widget& src,
+                    lui::Widget& tgt,
                     Point<float> pos) {
     return event (m, src, tgt, Modifier(), pos, 0);
 }
 
-static Event event (lvtk::Main& m,
-                    lvtk::Widget& src,
-                    lvtk::Widget& tgt,
+static Event event (lui::Main& m,
+                    lui::Widget& src,
+                    lui::Widget& tgt,
                     Modifier mods,
                     Point<float> pos,
                     Point<float> last_pos,
@@ -117,8 +117,8 @@ static Event event (lvtk::Main& m,
 struct KeyState {
     PuglKeyEvent event;
     bool down = false;
-    lvtk::Widget* source { nullptr };
-    lvtk::Widget* target { nullptr };
+    lui::Widget* source { nullptr };
+    lui::Widget* target { nullptr };
     KeyState& set (const PuglKeyEvent& pev) {
         event = pev;
         return *this;
@@ -142,25 +142,25 @@ public:
             clear_key (key);
     }
 
-    void press (lvtk::View& view, const PuglKeyEvent& pev) {
+    void press (lui::View& view, const PuglKeyEvent& pev) {
         auto& ev  = down[pev.keycode].set (pev);
         ev.down   = true;
         ev.source = &view.widget();
         ev.target = nullptr;
     }
 
-    void release (lvtk::View& view, const PuglKeyEvent& pev) {
+    void release (lui::View& view, const PuglKeyEvent& pev) {
         auto& ev  = up[pev.keycode].set (pev);
         ev.down   = false;
         auto& dev = down.at (pev.keycode);
         dev.down  = false;
     }
 
-    lvtk::Widget* target (uint32_t key) const noexcept {
+    lui::Widget* target (uint32_t key) const noexcept {
         return down.at (key).target;
     }
 
-    void set_target (uint32_t key, lvtk::Widget* tgt) {
+    void set_target (uint32_t key, lui::Widget* tgt) {
         down.at (key).target = tgt;
     }
 
@@ -182,8 +182,8 @@ private:
 struct ButtonState {
     PuglButtonEvent event;
     ViewRef view;
-    lvtk::Widget* source;
-    lvtk::Widget* target;
+    lui::Widget* source;
+    lui::Widget* target;
 
     bool down = false;
 
@@ -237,7 +237,7 @@ public:
     }
 
     /** returns true if any button is down with widget as the target */
-    bool is_down (lvtk::Widget& widget) const noexcept {
+    bool is_down (lui::Widget& widget) const noexcept {
         for (int i = 0; i < LUI_MAX_BUTTONS; ++i)
             if (down[i].down == true && down[i].target == &widget)
                 return true;
@@ -258,7 +258,7 @@ public:
         return Modifier::NONE;
     }
 
-    void pressed (const PuglButtonEvent& pev, lvtk::View& view) {
+    void pressed (const PuglButtonEvent& pev, lui::View& view) {
         auto& ev  = down[pev.button].set (pev);
         ev.view   = &view;
         ev.source = &view.widget();
@@ -273,7 +273,7 @@ public:
         clear_state (rev);
     }
 
-    void released (const PuglButtonEvent& pev, lvtk::View& view) {
+    void released (const PuglButtonEvent& pev, lui::View& view) {
         auto& ev  = up[pev.button].set (pev);
         ev.down   = false;
         ev.view   = &view;
@@ -297,22 +297,22 @@ public:
         multiple_click_timeout = to;
     }
 
-    void set_target (int button, lvtk::Widget* widget) {
+    void set_target (int button, lui::Widget* widget) {
         down[button].target = widget;
         up[button].target   = widget;
     }
 
     Modifier modifiers() const noexcept { return mods; }
 
-    lvtk::View* view (int button) const noexcept {
+    lui::View* view (int button) const noexcept {
         return down[button].view.lock();
     }
 
-    lvtk::Widget* source (int button) const noexcept {
+    lui::Widget* source (int button) const noexcept {
         return down[button].source;
     }
 
-    lvtk::Widget* target (int button) const noexcept {
+    lui::Widget* target (int button) const noexcept {
         return down[button].target;
     }
 
@@ -336,7 +336,7 @@ private:
 // The actual View impl.
 class View {
 public:
-    View (lvtk::View& o, lvtk::Main& m, lvtk::Widget& w);
+    View (lui::View& o, lui::Main& m, lui::Widget& w);
     ~View();
 
     void set_backend (uintptr_t b) {
@@ -375,18 +375,18 @@ public:
         }
     }
 
-    void set_focused_widget (lvtk::Widget* widget) {
+    void set_focused_widget (lui::Widget* widget) {
         if (focused == widget)
             return;
         focused = widget;
     }
 
-    bool widget_is_focused (const lvtk::Widget* widget) const {
+    bool widget_is_focused (const lui::Widget* widget) const {
         return widget != nullptr && focused == widget;
     }
 
     template <class Fn>
-    static void foreach_widget_recursive (lvtk::Widget& widget, Fn&& f) {
+    static void foreach_widget_recursive (lui::Widget& widget, Fn&& f) {
         f (widget);
         for (auto w : widget.impl->widgets)
             foreach_widget_recursive (*w, f);
@@ -398,15 +398,15 @@ public:
     }
 
 private:
-    friend class lvtk::View;
-    friend class lvtk::Main;
+    friend class lui::View;
+    friend class lui::Main;
 
-    lvtk::View& owner;
-    lvtk::Main& main;
-    lvtk::Widget& widget;
+    lui::View& owner;
+    lui::Main& main;
+    lui::Widget& widget;
     PuglView* view { nullptr };
-    WeakRef<lvtk::Widget> hovered;
-    WeakRef<lvtk::Widget> focused;
+    WeakRef<lui::Widget> hovered;
+    WeakRef<lui::Widget> focused;
     Buttons buttons;
     Keyboard keyboard;
 
@@ -545,7 +545,7 @@ private:
     static PuglStatus key_press (View& view, const PuglKeyEvent& ev) {
         view.keyboard.press (view.owner, ev);
         if (auto f = view.focused.lock()) {
-            lvtk::KeyEvent kev (ev.key, Modifier (ev.state));
+            lui::KeyEvent kev (ev.key, Modifier (ev.state));
             f->key_down (kev);
         }
         return PUGL_SUCCESS;
@@ -554,7 +554,7 @@ private:
     static PuglStatus key_release (View& view, const PuglKeyEvent& ev) {
         view.keyboard.release (view.owner, ev);
         if (auto f = view.focused.lock()) {
-            lvtk::KeyEvent kev (static_cast<int> (ev.key), Modifier (ev.state));
+            lui::KeyEvent kev (static_cast<int> (ev.key), Modifier (ev.state));
             f->key_up (kev);
         }
         return PUGL_SUCCESS;
@@ -573,7 +573,7 @@ private:
 
         // if (view.widget.obstructed (pos.as<int>().x, pos.as<int>().y)) {
         if (view.widget.contains (pos)) {
-            lvtk::Event ev (view.main,
+            lui::Event ev (view.main,
                             pos,
                             Modifier(),
                             &view.widget,
@@ -589,7 +589,7 @@ private:
         auto pos = detail::point<float> (pev) / view.scale_factor();
 
         if (view.widget.contains (pos)) {
-            lvtk::Event ev (view.main,
+            lui::Event ev (view.main,
                             pos,
                             Modifier(),
                             &view.widget,
@@ -741,4 +741,4 @@ private:
 };
 
 } // namespace detail
-} // namespace lvtk
+} // namespace lui

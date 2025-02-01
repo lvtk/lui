@@ -8,7 +8,7 @@
 #include <lui/string.hpp>
 #include <lui/point.hpp>
 
-namespace lvtk {
+namespace lui {
 
 /** A rectangle. x y width height.
     @tparam Val the value type of this rectangle.
@@ -309,4 +309,4 @@ struct Rectangle {
 */
 using Bounds = Rectangle<int>;
 
-} // namespace lvtk
+} // namespace lui

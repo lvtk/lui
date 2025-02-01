@@ -19,7 +19,7 @@
 
 #include <lui/cairo.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace cairo {
 
 class Context : public DrawingContext {
@@ -33,7 +33,7 @@ public:
         cr = nullptr;
     }
 
-    bool begin_frame (cairo_t* _cr, lvtk::Bounds bounds) {
+    bool begin_frame (cairo_t* _cr, lui::Bounds bounds) {
         cr    = _cr;
         state = {};
         stack.clear();
@@ -150,7 +150,7 @@ public:
 
     Font font() const noexcept override { return state.font; }
     void set_font (const Font& f) override {
-        // TODO: equals operator is not yet reliable in lvtk::Font
+        // TODO: equals operator is not yet reliable in lui::Font
         // if (state.font == f)
         //     return;
         state.font = f;
@@ -240,7 +240,7 @@ public:
 private:
     cairo_t* cr { nullptr };
     struct State {
-        lvtk::Color color;
+        lui::Color color;
         Rectangle<double> clip;
         Font font;
 
@@ -270,10 +270,10 @@ private:
     }
 };
 
-class View : public lvtk::View {
+class View : public lui::View {
 public:
     View (Main& m, Widget& w)
-        : lvtk::View (m, w) {
+        : lui::View (m, w) {
         set_backend ((uintptr_t) puglCairoBackend());
         set_view_hint (PUGL_DOUBLE_BUFFER, PUGL_FALSE);
         set_view_hint (PUGL_RESIZABLE, PUGL_TRUE);
@@ -334,7 +334,7 @@ public:
     }
 
 private:
-    using Parent = lvtk::View;
+    using Parent = lui::View;
     PuglView* _view;
     std::unique_ptr<Context> _context;
     bool _scale_set { false };
@@ -342,8 +342,8 @@ private:
 };
 } // namespace cairo
 
-std::unique_ptr<lvtk::View> Cairo::create_view (Main& c, Widget& w) {
+std::unique_ptr<lui::View> Cairo::create_view (Main& c, Widget& w) {
     return std::make_unique<cairo::View> (c, w);
 }
 
-} // namespace lvtk
+} // namespace lui

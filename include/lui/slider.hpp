@@ -10,12 +10,12 @@
 #include <lui/widget.hpp>
 
 // clang-format off
-namespace lvtk { namespace detail { class Ranged; } }
-namespace lvtk { namespace detail { class Slider; } }
-namespace lvtk { namespace detail { class Dial; } }
+namespace lui { namespace detail { class Ranged; } }
+namespace lui { namespace detail { class Slider; } }
+namespace lui { namespace detail { class Dial; } }
 // clang-format on
 
-namespace lvtk {
+namespace lui {
 
 /** A range of two values
     E.g. min and max with some conversion helpers
@@ -173,4 +173,4 @@ private:
     void drag (const Event&) override;
 };
 
-} // namespace lvtk
+} // namespace lui

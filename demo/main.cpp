@@ -16,14 +16,14 @@
 
 #include "demo.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace demo {
 
 template <class Wgt>
-static int run (lvtk::Main& context) {
+static int run (lui::Main& context) {
     try {
         auto content = std::make_unique<Wgt>();
-        if (auto view = context.elevate (*content, lvtk::View::RESIZABLE, 0)) {
+        if (auto view = context.elevate (*content, lui::View::RESIZABLE, 0)) {
             view->set_position ((1920 / 2) - (view->bounds().width / 2),
                                 (1080 / 2) - (view->bounds().height / 2));
         }
@@ -43,7 +43,7 @@ static int run (lvtk::Main& context) {
 }
 
 } // namespace demo
-} // namespace lvtk
+} // namespace lui
 
 #ifdef _WIN32
 #    include <windows.h>
@@ -65,14 +65,14 @@ int WinMain (HINSTANCE hInstance,
     auto clogbuf = std::clog.rdbuf (&dbgbuf);
 
 #    if LUI_DEMO_CAIRO
-    lvtk::Main context (lvtk::Mode::PROGRAM, std::make_unique<lvtk::Cairo>());
+    lui::Main context (lui::Mode::PROGRAM, std::make_unique<lui::Cairo>());
 #    elif LUI_DEMO_VULKAN
-    lvtk::Main context (lvtk::Mode::PROGRAM, std::make_unique<lvtk::Vulkan>());
+    lui::Main context (lui::Mode::PROGRAM, std::make_unique<lui::Vulkan>());
 #    else
-    lvtk::Main context (lvtk::Mode::PROGRAM, std::make_unique<lvtk::OpenGL>());
+    lui::Main context (lui::Mode::PROGRAM, std::make_unique<lui::OpenGL>());
 #    endif
 
-    auto ret = lvtk::demo::run<lvtk::demo::Content> (context);
+    auto ret = lui::demo::run<lui::demo::Content> (context);
 
     std::clog.rdbuf (clogbuf);
     return ret;
@@ -80,12 +80,12 @@ int WinMain (HINSTANCE hInstance,
 #else
 int main (int argc, char** argv) {
 #    if LUI_DEMO_CAIRO
-    lvtk::Main context (lvtk::Mode::PROGRAM, std::make_unique<lvtk::Cairo>());
+    lui::Main context (lui::Mode::PROGRAM, std::make_unique<lui::Cairo>());
 #    elif LUI_DEMO_VULKAN
-    lvtk::Main context (lvtk::Mode::PROGRAM, std::make_unique<lvtk::Vulkan>());
+    lui::Main context (lui::Mode::PROGRAM, std::make_unique<lui::Vulkan>());
 #    else
-    lvtk::Main context (lvtk::Mode::PROGRAM, std::make_unique<lvtk::OpenGL>());
+    lui::Main context (lui::Mode::PROGRAM, std::make_unique<lui::OpenGL>());
 #    endif
-    return lvtk::demo::run<lvtk::demo::Content> (context);
+    return lui::demo::run<lui::demo::Content> (context);
 }
 #endif

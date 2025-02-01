@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace lvtk {
+namespace lui {
 
 Graphics::Graphics (DrawingContext& d)
     : _context (d) {}
@@ -171,4 +171,4 @@ void Graphics::draw_image (Image image, Transform transform) {
     _context.restore();
 }
 
-} // namespace lvtk
+} // namespace lui

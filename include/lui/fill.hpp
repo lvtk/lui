@@ -7,7 +7,7 @@
 #include <lui/color.hpp>
 #include <lui/image.hpp>
 
-namespace lvtk {
+namespace lui {
 
 /** A type of Fill used by DrawingContext
     i.e. fill Solid, Image, Gradient.
@@ -38,4 +38,4 @@ private:
     Color _color;
 };
 
-} // namespace lvtk
+} // namespace lui

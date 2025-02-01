@@ -19,7 +19,7 @@
 #endif
 // =================== end widget debugging ===================//
 
-namespace lvtk {
+namespace lui {
 namespace convert {
 #if 0 // disabled until needed
 /** From pyhsical to logical coordinats. */
@@ -89,7 +89,7 @@ namespace detail {
 template <typename T>
 static int round_int (T v) { return static_cast<int> (v); }
 
-static inline bool test_pos (lvtk::Widget& widget, Point<float> pos) {
+static inline bool test_pos (lui::Widget& widget, Point<float> pos) {
     auto ipos = pos.as<int>();
     return widget.bounds().at (0, 0).contains (ipos)
            && widget.obstructed (ipos.x, ipos.y);
@@ -99,9 +99,9 @@ class View;
 
 class Widget {
 public:
-    using Owner = lvtk::Widget;
+    using Owner = lui::Widget;
 
-    Widget (lvtk::Widget& o) : owner (o) {}
+    Widget (lui::Widget& o) : owner (o) {}
     ~Widget() {}
 
     void grab_focus();
@@ -115,26 +115,26 @@ public:
     void notify_moved_resized (bool was_moved, bool was_resized);
 
 private:
-    friend class lvtk::Widget;
-    friend class lvtk::Main;
+    friend class lui::Widget;
+    friend class lui::Main;
     friend class detail::Main;
-    friend class lvtk::View;
+    friend class lui::View;
     friend class detail::View;
 
-    lvtk::Widget& owner;
+    lui::Widget& owner;
     std::string name;
-    lvtk::Widget* parent = nullptr;
-    std::unique_ptr<lvtk::View> view;
-    std::vector<lvtk::Widget*> widgets;
+    lui::Widget* parent = nullptr;
+    std::unique_ptr<lui::View> view;
+    std::vector<lui::Widget*> widgets;
     Rectangle<int> bounds;
     bool visible { false };
     bool opaque { true };
     bool dont_clip { false };
 
-    static bool clip_widgets_blocking (const lvtk::Widget& w, Graphics& g, const Rectangle<int> cr, Point<int> delta);
-    static void render_child (lvtk::Widget& cw, Graphics& g);
-    static void render_all (lvtk::Widget& widget, Graphics& g);
+    static bool clip_widgets_blocking (const lui::Widget& w, Graphics& g, const Rectangle<int> cr, Point<int> delta);
+    static void render_child (lui::Widget& cw, Graphics& g);
+    static void render_all (lui::Widget& widget, Graphics& g);
 };
 
 } // namespace detail
-} // namespace lvtk
+} // namespace lui

@@ -10,7 +10,7 @@
     C API.
 
     <b>Extension Mixins</b><br>
-    For both the @ref lvtk::Plugin and the @ref lvtk::UI classes there are other helper
+    For both the @ref lui::Plugin and the @ref lui::UI classes there are other helper
     classes called Extensions that you can use to add extra
     functionality to your plugin or UI.
 
@@ -42,7 +42,7 @@
 #include <lv2/core/lv2.h>
 #include <lui/lui.h>
 
-namespace lvtk {
+namespace lui {
 /** @defgroup alias Alias 
     Aliases to LV2 C-types 
  */
@@ -279,4 +279,4 @@ protected:
     data_ptr_type data = nullptr;
 };
 /* @} */
-} // namespace lvtk
+} // namespace lui

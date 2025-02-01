@@ -7,7 +7,7 @@
 #include <cstring>
 #include <string>
 
-namespace lvtk {
+namespace lui {
 
 /** A typical String type.
     
@@ -136,4 +136,4 @@ APPEND (float)
 APPEND (double)
 #undef APPEND
 
-} // namespace lvtk
+} // namespace lui

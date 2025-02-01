@@ -42,7 +42,7 @@ struct WeakRefTest {
 
     class SubObject : public TestObject {};
 
-    using TestRef = lvtk::WeakRef<TestObject>;
+    using TestRef = lui::WeakRef<TestObject>;
 };
 
 BOOST_AUTO_TEST_SUITE (WeakRef)

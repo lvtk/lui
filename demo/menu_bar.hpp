@@ -5,7 +5,7 @@
 
 #include <lui/widget.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace demo {
 
 class MenuBar : public Widget {
@@ -79,4 +79,4 @@ private:
 };
 
 } // namespace demo
-} // namespace lvtk
+} // namespace lui

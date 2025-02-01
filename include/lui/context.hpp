@@ -5,7 +5,7 @@
 
 #include <lui/symbols.hpp>
 
-namespace lvtk {
+namespace lui {
 
 class LUI_API Context {
 protected:
@@ -19,4 +19,4 @@ private:
     Symbols _symbols;
 };
 
-} // namespace lvtk
+} // namespace lui

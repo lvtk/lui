@@ -11,7 +11,7 @@
 #include <lui/graphics.hpp> // point
 #include <lui/weak_ref.hpp>
 
-namespace lvtk {
+namespace lui {
 
 class Main;
 class View;
@@ -260,4 +260,4 @@ private:
     Event& operator= (const Event& o);
 };
 
-} // namespace lvtk
+} // namespace lui

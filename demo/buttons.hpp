@@ -9,7 +9,7 @@
 #include <lui/button.hpp>
 #include <lui/image.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace demo {
 
 class Buttons : public DemoWidget {
@@ -68,4 +68,4 @@ private:
 };
 
 } // namespace demo
-} // namespace lvtk
+} // namespace lui

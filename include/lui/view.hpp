@@ -14,7 +14,7 @@
     @{ 
 */
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 class Main;
 class View;
@@ -132,6 +132,6 @@ private:
 
 using ViewRef = WeakRef<View>;
 
-} // namespace lvtk
+} // namespace lui
 
 /** @} */

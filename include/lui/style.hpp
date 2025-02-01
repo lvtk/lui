@@ -11,7 +11,7 @@
 #include <lui/graphics.hpp>
 #include <lui/weak_ref.hpp>
 
-namespace lvtk {
+namespace lui {
 
 class Button;
 class Graphics;
@@ -104,4 +104,4 @@ private:
     LUI_DISABLE_COPY (Style)
 };
 
-} // namespace lvtk
+} // namespace lui

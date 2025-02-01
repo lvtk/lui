@@ -12,7 +12,7 @@
 #include <lui/context.hpp>
 #include <lui/view.hpp>
 
-namespace lvtk {
+namespace lui {
 class Backend;
 class Style;
 class Widget;
@@ -169,4 +169,4 @@ private:
     LUI_DISABLE_COPY (Backend)
 };
 
-} // namespace lvtk
+} // namespace lui

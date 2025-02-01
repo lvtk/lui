@@ -3,7 +3,7 @@
 
 #include <lui/fitment.hpp>
 
-namespace lvtk {
+namespace lui {
 
 bool Fitment::operator== (const Fitment& o) const noexcept {
     return _flags == o._flags;
@@ -91,4 +91,4 @@ Transform Fitment::transform (const Rectangle<double>& src, const Rectangle<doub
         .translated (new_x, new_y);
 }
 
-} // namespace lvtk
+} // namespace lui

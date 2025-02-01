@@ -6,7 +6,7 @@
 #include <lui/lui.h>
 #include <lui/widget.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 /** @private */
 class Embed;
@@ -42,4 +42,4 @@ private:
     LUI_DISABLE_COPY (Embed)
 };
 
-} // namespace lvtk
+} // namespace lui

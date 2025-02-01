@@ -3,7 +3,7 @@
 
 #include <lui/style.hpp>
 
-namespace lvtk {
+namespace lui {
 
 Style::Style() {
     _weak_status.reset (this);
@@ -26,4 +26,4 @@ Color Style::find_color (int ID) const noexcept {
     return {};
 }
 
-} // namespace lvtk
+} // namespace lui

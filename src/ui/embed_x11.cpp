@@ -10,7 +10,7 @@
 
 #include <X11/Xlib.h>
 
-namespace lvtk {
+namespace lui {
 
 namespace x11 {
 
@@ -69,17 +69,17 @@ namespace detail {
 
 class X11Embed final : public detail::Embed {
 public:
-    X11Embed (lvtk::Embed& x) : detail::Embed (x) {}
+    X11Embed (lui::Embed& x) : detail::Embed (x) {}
     ~X11Embed() {}
 
 private:
-    friend class lvtk::Embed;
+    friend class lui::Embed;
     ViewRef owner_view;
 };
 
-std::unique_ptr<detail::Embed> Embed::create (lvtk::Embed& owner) {
+std::unique_ptr<detail::Embed> Embed::create (lui::Embed& owner) {
     return std::make_unique<detail::X11Embed> (owner);
 }
 
 } // namespace detail
-} // namespace lvtk
+} // namespace lui

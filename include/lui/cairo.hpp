@@ -6,7 +6,7 @@
 #include <lui/lui.h>
 #include <lui/main.hpp>
 
-namespace lvtk {
+namespace lui {
 
 class Main;
 class Widget;
@@ -23,4 +23,4 @@ struct LUI_API Cairo : public Backend {
     std::unique_ptr<View> create_view (Main& c, Widget& w) override;
 };
 
-} // namespace lvtk
+} // namespace lui

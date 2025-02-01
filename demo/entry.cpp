@@ -8,7 +8,7 @@
 #include "demo.hpp"
 #include "utils.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace demo {
 
 class EntryDemo : public DemoWidget {
@@ -38,4 +38,4 @@ std::unique_ptr<Widget> create_entry_demo() {
 }
 
 } // namespace demo
-} // namespace lvtk
+} // namespace lui

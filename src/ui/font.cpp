@@ -3,7 +3,7 @@
 
 #include <lui/font.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 
 static constexpr float default_height = 15.f;
@@ -12,7 +12,7 @@ class Font {
 public:
     Font() {}
     float height { default_height };
-    uint8_t flags { lvtk::Font::NORMAL };
+    uint8_t flags { lui::Font::NORMAL };
     std::shared_ptr<Typeface> face;
     Font (const Font& o) { operator= (o); }
     Font& operator= (const Font& o) {
@@ -89,4 +89,4 @@ bool Font::operator!= (const Font& o) const noexcept {
     return impl != o.impl || *impl != *o.impl;
 }
 
-} // namespace lvtk
+} // namespace lui

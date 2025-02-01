@@ -6,10 +6,10 @@
 Main
 ####
 
-:class:`lvtk::Main` is the top-level context for GUIs which represents a 
+:class:`lui::Main` is the top-level context for GUIs which represents a 
 running instance. Essentially it is a wrapper around PuglWorld with added 
 functionality for displaying Widgets. It handles the connection to the 
-window system, manages elevated :class:`lvtk::Widget` instances and drives 
+window system, manages elevated :class:`lui::Widget` instances and drives 
 the event loop.
 
 An application or module typically has a single Main, which is constructed 
@@ -27,7 +27,7 @@ type:
 
 .. code-block:: cpp
 
-   lvtk::Main context { lvtk::Mode::PROGRAM, std::make_unique<lvtk::OpenGL>() };
+   lui::Main context { lui::Mode::PROGRAM, std::make_unique<lui::OpenGL>() };
 
 For a plugin, specify :enumerator:`Mode::MODULE` instead.
 

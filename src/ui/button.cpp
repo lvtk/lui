@@ -3,16 +3,16 @@
 
 #include <lui/button.hpp>
 
-namespace lvtk {
+namespace lui {
 namespace detail {
 
 class Button {
 public:
-    Button (lvtk::Button& b) : owner (b) {}
+    Button (lui::Button& b) : owner (b) {}
 
 private:
-    lvtk::Button& owner;
-    friend class lvtk::Button;
+    lui::Button& owner;
+    friend class lui::Button;
     bool toggled = false;
     bool down = false, over = false;
 
@@ -24,11 +24,11 @@ private:
 
 class TextButton {
 public:
-    TextButton (lvtk::TextButton& o) : owner (o) {}
+    TextButton (lui::TextButton& o) : owner (o) {}
 
 private:
-    lvtk::TextButton& owner;
-    friend class lvtk::TextButton;
+    lui::TextButton& owner;
+    friend class lui::TextButton;
     std::string text;
 };
 
@@ -97,4 +97,4 @@ void TextButton::set_text (const String& text) {
     repaint();
 }
 
-} // namespace lvtk
+} // namespace lui

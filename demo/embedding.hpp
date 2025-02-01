@@ -8,7 +8,7 @@
 
 #include "utils.hpp"
 
-namespace lvtk {
+namespace lui {
 namespace demo {
 
 class Embedding : public Widget {
@@ -98,7 +98,7 @@ protected:
     void parent_structure_changed() override {
         if (loaded())
             return;
-        if (lvtk::ViewRef view = find_view()) {
+        if (lui::ViewRef view = find_view()) {
             conn_idle.disconnect();
             conn_idle = view->connect_idle (std::bind (&Embedding::idle, this));
         }
@@ -111,4 +111,4 @@ private:
 };
 
 } // namespace demo
-} // namespace lvtk
+} // namespace lui
