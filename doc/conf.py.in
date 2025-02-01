@@ -1,0 +1,12 @@
+project = "LVTK"
+copyright = "2022, Michael Fisher"
+author = "Michael Fisher"
+version = "3.0"
+release = "@LUI_VERSION@"
+
+master_doc = 'index'
+
+html_theme = "sphinx_rtd_theme"
+html_js_files = [
+    'js/custom.js'
+]
