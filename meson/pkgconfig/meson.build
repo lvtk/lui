@@ -8,7 +8,7 @@ pkg.generate (
     subdirs     : 'lvtk-@0@'.format (lui_abi_version),
     install_dir : get_option ('libdir') / 'pkgconfig',
     requires    : [])
-pkg.generate (libwidgets,
+pkg.generate (liblui,
     name        : 'LVTK Widgets',
     filebase    : 'lvtk-widgets-@0@'.format (lui_abi_version),
     version     : meson.project_version(),

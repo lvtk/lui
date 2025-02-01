@@ -9,7 +9,7 @@ demo_sources = '''
 subdir('res')
 demo_sources += demo_res_sources
 
-demo_deps = [ host_dep, widgets_dep, cairo_dep, threads_dep ]
+demo_deps = [ lui_cairo_dep, cairo_dep, threads_dep ]
 
 demo_includes = include_directories ('.')
 

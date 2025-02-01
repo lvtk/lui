@@ -44,15 +44,14 @@ elif get_option('default_library') == 'static'
     add_project_arguments(['-DLUI_STATIC'], language: ['c', 'cpp'])
 endif
 
-dep = declare_dependency (
-    include_directories : [ 'include' ],
-    dependencies : [])
 lui_internal_dep = declare_dependency (
-    include_directories : [ 'src' ],
-    dependencies : dep)
+    include_directories : [ 'include', 'src' ],
+    dependencies : [])
 
 ### shared libs
 subdir ('src')
+
+
 
 if not get_option('bindings').disabled()
     # subdir ('bindings')

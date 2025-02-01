@@ -19,7 +19,7 @@ unit_test_sources = '''
 
 unit = executable ('lui-unit',
     unit_test_sources,
-    dependencies : [ boost_dep, lui_internal_dep, widgets_dep, lilv_dep ],
+    dependencies : [ boost_dep, lui_internal_dep, lui_dep ],
     gnu_symbol_visibility : 'hidden',
     cpp_args : ['-DLUI_NO_SYMBOL_EXPORT'])
 
