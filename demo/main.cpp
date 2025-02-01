@@ -7,11 +7,11 @@
 #include <lui/view.hpp>
 
 #if LUI_DEMO_CAIRO
-#    include <lvtk/ui/cairo.hpp>
+#    include <lui/cairo.hpp>
 #elif LUI_DEMO_VULKAN
-#    include <lvtk/ui/vulkan.hpp>
+#    include <lui/vulkan.hpp>
 #elif LUI_DEMO_OPENGL
-#    include <lvtk/ui/opengl.hpp>
+#    include <lui/opengl.hpp>
 #endif
 
 #include "demo.hpp"
