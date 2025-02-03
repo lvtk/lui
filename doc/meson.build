@@ -49,7 +49,7 @@ docs = custom_target(
   output: 'html',
   build_by_default: true,
   install: true,
-  install_dir: get_option('datadir') / 'doc' / 'lvtk-3')
+  install_dir: get_option('datadir') / 'doc' / 'lui-0')
 
 subdir ('html/_static/js')
 
