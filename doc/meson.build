@@ -1,7 +1,9 @@
-doxygen = find_program ('doxygen', required : get_option('doc'))
-sphinx_build = find_program ('sphinx-build', required : get_option('doc'))
+docs_enabled = get_option('doc').enabled()
+dot = find_program ('dot', required : docs_enabled)
+doxygen = find_program ('doxygen', required : docs_enabled)
+sphinx_build = find_program ('sphinx-build', required : docs_enabled)
 
-if doxygen.found() and sphinx_build.found()
+if doxygen.found() and sphinx_build.found() and dot.found()
 
 conf_py = configure_file (configuration: {
         'LUI_VERSION' : meson.project_version() 

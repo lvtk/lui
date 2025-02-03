@@ -14,7 +14,7 @@ class TextButton;
 
 /** A generic button. 
     @ingroup widgets
-    @headerfile lvtk/ui/button.hpp
+    @headerfile lui/button.hpp
 */
 class LUI_API Button : public lui::Widget {
 public:

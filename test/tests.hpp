@@ -3,6 +3,6 @@
 
 #pragma once
 
+#include <lui/lui.h>
 #include <lui/lui.hpp>
 #include <lui/symbols.hpp>
-#include <lui/lui.h>

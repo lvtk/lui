@@ -1,5 +1,5 @@
-PROJECT_NAME           = LVTK
-PROJECT_BRIEF          = "A minimal portable API for LV2 plugins and GUIs"
+PROJECT_NAME           = Lui
+PROJECT_BRIEF          = "A minimal portable GUI library"
 
 QUIET                  = YES
 WARN_AS_ERROR          = YES
@@ -34,6 +34,6 @@ PREDEFINED             = LUI_API \
 RECURSIVE              = YES
 STRIP_FROM_PATH        = @LUI_SRCDIR@
 INPUT                  = @LUI_SRCDIR@/include
-EXAMPLE_PATH           = @LUI_SRCDIR@/lvtk.lv2 
+# EXAMPLE_PATH           = @LUI_SRCDIR@/lvtk.lv2 
 
 OUTPUT_DIRECTORY       = @DOX_OUTPUT@

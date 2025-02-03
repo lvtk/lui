@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: ISC
 
 #include "proxy.hpp"
+#include <lui/cairo.hpp>
 #include <lui/lui.hpp>
 #include <lui/string.hpp>
-#include <lui/cairo.hpp>
 
 #include "./lvtk/bindings.h"
 

@@ -16,7 +16,7 @@ class Font;
 
 /** A typeface 
     @ingroup graphics
-    @headerfile lvtk/ui/font.hpp
+    @headerfile lui/font.hpp
 */
 class LUI_API Typeface {
 public:
@@ -30,7 +30,7 @@ public:
 
 /** Shared Typeface ptr.
     @ingroup graphics
-    @headerfile lvtk/ui/font.hpp
+    @headerfile lui/font.hpp
  */
 using TypefacePtr = std::shared_ptr<Typeface>;
 
@@ -39,7 +39,7 @@ using FontFlags = uint8_t;
 
 /** A font.
     @ingroup graphics
-    @headerfile lvtk/ui/font.hpp
+    @headerfile lui/font.hpp
 */
 class LUI_API Font final {
 public:

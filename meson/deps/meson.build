@@ -19,35 +19,33 @@ if host_machine.system() == 'darwin'
 endif
 
 ### Cairo
-cairo_dep = dependency ('', required : false)
-if not cairo_dep.found()
-  cairo_proj = subproject ('cairo',
-      version : '>= 1.18.2',
-      default_options : [
-          'default_library=static',
-          'quartz=auto',
-          'png=enabled',
-          'dwrite=enabled',
-          'fontconfig=enabled',
-          'freetype=disabled',
-          'tests=disabled',
-          'gtk2-utils=disabled',
-          'xlib=@0@'.format(host_machine.system() == 'linux' ? 'enabled' : 'disabled'),
-          'xcb=disabled',
-          'xlib-xcb=disabled',
-          'glib=disabled',
-          'spectre=disabled',
-          'symbol-lookup=disabled',
-          'tee=disabled',
-          'zlib=disabled',
-          'c_args=-Wno-maybe-uninitialized'
-      ],
-      required : true)
-  cairo_dep = cairo_proj.get_variable ('libcairo_dep')
-endif
+cairo_dep = dependency ('cairo', 
+    required : true,
+    fallback: [ 'cairo', 'cairo_dep' ],
+    version : '>= 1.16.0',
+    default_options : [
+        'default_library=static',
+        'quartz=auto',
+        'png=enabled',
+        'dwrite=enabled',
+        'fontconfig=enabled',
+        'freetype=disabled',
+        'tests=disabled',
+        'gtk2-utils=disabled',
+        'xlib=@0@'.format(host_machine.system() == 'linux' ? 'enabled' : 'disabled'),
+        'xcb=disabled',
+        'xlib-xcb=disabled',
+        'glib=disabled',
+        'spectre=disabled',
+        'symbol-lookup=disabled',
+        'tee=disabled',
+        'zlib=disabled',
+        'c_args=-Wno-maybe-uninitialized'
+    ])
 
 ### Pugl
 pugl_opts = [
+    'default_library=static',
     'tests=disabled',
     'examples=disabled',
     'cairo=@0@'.format (cairo_dep.found() ? 'enabled' : 'disabled'),

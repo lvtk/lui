@@ -9,8 +9,8 @@
 #include <stdint.h>        // for uint32_t
 #include <string.h>        // for memset
 
-#include <lv2/options/options.h>
 #include <lui/ext/options.hpp>
+#include <lv2/options/options.h>
 
 namespace lui {
 
@@ -19,7 +19,7 @@ namespace lui {
     Plugin implementations don't need to use this.  You can, however, use this 
     in an LV2 host to easily provide URID map/unmaping features to plugins.
 
-    @headerfile lvtk/options.hpp
+    @headerfile lui/options.hpp
     @ingroup options
 */
 class OptionArray {

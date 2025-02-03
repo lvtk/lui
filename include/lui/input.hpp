@@ -19,13 +19,13 @@ class Widget;
 
 /** Alias for Modifier flags
     @ingroup widgets
-    @headerfile lvtk/ui/input.hpp
+    @headerfile lui/input.hpp
 */
 using ModifierFlags = uint32_t;
 
 /** Modifier keys
     @ingroup widgets
-    @headerfile lvtk/ui/input.hpp
+    @headerfile lui/input.hpp
 */
 class LUI_API Modifier final {
 public:
@@ -121,7 +121,7 @@ private:
 
 /** A KeyPress event
     @ingroup widgets
-    @headerfile lvtk/ui/input.hpp
+    @headerfile lui/input.hpp
  */
 class LUI_API KeyEvent {
 public:
@@ -159,7 +159,7 @@ private:
 };
 
 /** A KeyPress event
-    @headerfile lvtk/ui/input.hpp
+    @headerfile lui/input.hpp
     @ingroup widgets
 */
 class LUI_API TextEvent {

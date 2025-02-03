@@ -5,8 +5,8 @@
 
 #include <boost/signals2/signal.hpp>
 
-#include <lui/lui.h>
 #include <lui/graphics.hpp>
+#include <lui/lui.h>
 #include <lui/style.hpp>
 #include <lui/weak_ref.hpp>
 
@@ -26,13 +26,13 @@ class Widget;
 
 /** Flag type for views.
     @ingroup widgets
-    @headerfile lvtk/ui/view.hpp 
+    @headerfile lui/view.hpp 
 */
 using ViewFlags = uint32_t;
 
 /** A View.  e.g. OS window that renders a Widget.
     @ingroup widgets
-    @headerfile lvtk/ui/view.hpp 
+    @headerfile lui/view.hpp 
 */
 class LUI_API View {
 public:

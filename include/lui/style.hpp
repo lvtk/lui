@@ -21,7 +21,7 @@ class Widget;
 
 /** ColorID's for theming
     @ingroup widgets
-    @headerfile lvtk/ui/style.hpp
+    @headerfile lui/style.hpp
 */
 struct ColorID final {
     ColorID()  = delete;
@@ -47,7 +47,7 @@ struct ColorID final {
 
 /** Style used to draw common widgets.
     @ingroup widgets
-    @headerfile lvtk/ui/style.hpp
+    @headerfile lui/style.hpp
 */
 class LUI_API Style {
 public:

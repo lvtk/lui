@@ -574,11 +574,11 @@ private:
         // if (view.widget.obstructed (pos.as<int>().x, pos.as<int>().y)) {
         if (view.widget.contains (pos)) {
             lui::Event ev (view.main,
-                            pos,
-                            Modifier(),
-                            &view.widget,
-                            &view.widget,
-                            0);
+                           pos,
+                           Modifier(),
+                           &view.widget,
+                           &view.widget,
+                           0);
             view.widget.exit (ev);
         }
 
@@ -590,11 +590,11 @@ private:
 
         if (view.widget.contains (pos)) {
             lui::Event ev (view.main,
-                            pos,
-                            Modifier(),
-                            &view.widget,
-                            &view.widget,
-                            0);
+                           pos,
+                           Modifier(),
+                           &view.widget,
+                           &view.widget,
+                           0);
             view.widget.enter (ev);
         }
 

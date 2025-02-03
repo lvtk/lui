@@ -12,7 +12,7 @@ namespace lui {
     to Fitment, but does not imply any kind of scale-to-fit logic.
 
     @ingroup graphics
-    @headerfile lvtk/ui/justify.hpp
+    @headerfile lui/justify.hpp
 */
 class Justify final {
 public:

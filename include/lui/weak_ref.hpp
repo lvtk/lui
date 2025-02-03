@@ -151,11 +151,11 @@ private:
 
 } // namespace lui
 
-#define LUI_WEAK_REFABLE_WITH_MEMBER(klass, member)               \
-    friend class lui::WeakRef<klass>;                             \
-    lui::WeakStatus<klass> member;                                \
+#define LUI_WEAK_REFABLE_WITH_MEMBER(klass, member)              \
+    friend class lui::WeakRef<klass>;                            \
+    lui::WeakStatus<klass> member;                               \
     static lui::WeakStatus<klass> lui_weak_status (klass* obj) { \
-        return obj->member;                                        \
+        return obj->member;                                      \
     }
 
 /**

@@ -11,7 +11,7 @@ namespace lui {
 
 /** A point. x y coordinate.
     @ingroup graphics
-    @headerfile lvtk/ui/point.hpp
+    @headerfile lui/point.hpp
 */
 template <typename Val>
 struct Point {

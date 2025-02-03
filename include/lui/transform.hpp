@@ -12,7 +12,7 @@ namespace lui {
 /** An affine transformation matrix.
   
     @ingroup graphics
-    @headerfile lvtk/ui/graphics.hpp
+    @headerfile lui/graphics.hpp
 */
 class LUI_API Transform final {
 public:
@@ -21,7 +21,7 @@ public:
     Transform (double mat00, double mat01, double mat02,
                double mat10, double mat11, double mat12)
         : m00 (mat00), m01 (mat01), m02 (mat02), m10 (mat10), m11 (mat11), m12 (mat12) {}
-    
+
     bool operator== (const Transform& o) const noexcept {
         return m00 == o.m00
                && m01 == o.m01

@@ -21,7 +21,7 @@ public:
             slider.set_name (std::string ("Slider ") + std::to_string (i + 1));
             slider.set_type (slider_type);
             slider.set_range (0.0, 100.0);
-            slider.set_value (slider.range().max * i / ((double)total_sliders - 1.0), Notify::NONE);
+            slider.set_value (slider.range().max * i / ((double) total_sliders - 1.0), Notify::NONE);
             slider.on_value_changed = [this, &s = slider]() { update_text (s); };
         }
 

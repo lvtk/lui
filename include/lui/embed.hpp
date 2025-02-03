@@ -14,7 +14,7 @@ class Embed;
 
 /** Embed native views in another Widget. 
     @ingroup widgets
-    @headerfile lvtk/ui/embed.hpp
+    @headerfile lui/embed.hpp
  */
 class LUI_API Embed final : public Widget {
 public:

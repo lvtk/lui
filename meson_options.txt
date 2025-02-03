@@ -1,10 +1,10 @@
 
-option ('doc', type : 'feature', value : 'disabled',
+option ('doc', type : 'feature', value : 'auto',
     description : 'Build documentation [default: auto]')
 
 option ('test', type: 'feature', value: 'auto',
     description: 'Build tests [default: auto]')
-option ('demo', type: 'feature', value: 'disabled',
+option ('demo', type: 'feature', value: 'auto',
     description: 'Build UI widgets demo')
 
 option ('bindings', type: 'feature', value: 'disabled',

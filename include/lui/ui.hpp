@@ -21,19 +21,19 @@
 #include <utility>
 #include <vector>
 
+#include <lui/lui.hpp>
 #include <lv2/core/lv2.h>
 #include <lv2/ui/ui.h>
-#include <lui/lui.hpp>
 
 namespace lui {
 /** Vector of LV2UI_Descriptor's
-    @headerfile lvtk/ui.hpp
+    @headerfile lui/ui.hpp
     @ingroup ui
  */
 using UIDescriptors = DescriptorList<LV2UI_Descriptor>;
 
 /** Returns a global array of registered descriptors
-    @headerfile lvtk/ui.hpp
+    @headerfile lui/ui.hpp
     @ingroup ui
 */
 static inline UIDescriptors& ui_descriptors() {
@@ -47,7 +47,7 @@ static inline UIDescriptors& ui_descriptors() {
     Object
 
     @ingroup ui
-    @headerfile lvtk/ui.hpp
+    @headerfile lui/ui.hpp
  */
 class Controller {
 public:
@@ -80,7 +80,7 @@ private:
 };
 
 /** Parameters passed to UI instances
-    @headerfile lvtk/ui.hpp
+    @headerfile lui/ui.hpp
     @ingroup ui
 */
 struct UIArgs {
@@ -99,7 +99,7 @@ struct UIArgs {
 /** UI registration class
     Create a static one of these to register the descriptor for UI instance type.
     @ingroup ui
-    @headerfile lvtk/ui.hpp
+    @headerfile lui/ui.hpp
  */
 template <class U>
 class UIDescriptor final {
@@ -149,7 +149,7 @@ private:
     @tparam E    List of Extension mixins
 
     @ingroup ui
-    @headerfile lvtk/ui.hpp
+    @headerfile lui/ui.hpp
 */
 template <class S, template <class> class... E>
 class UI : public E<S>... {

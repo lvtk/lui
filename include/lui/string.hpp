@@ -14,7 +14,7 @@ namespace lui {
     Can be passed to functions which take const char* or std::string
     as an argument.
 
-    @headerfile lvtk/string.hpp
+    @headerfile lui/string.hpp
     @ingroup lvtk
  */
 class String final {

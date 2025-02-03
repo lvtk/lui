@@ -3,13 +3,13 @@
 
 #pragma once
 
-#include <lui/lui.h>
 #include <lui/color.hpp>
 #include <lui/fill.hpp>
 #include <lui/fitment.hpp>
 #include <lui/font.hpp>
 #include <lui/image.hpp>
 #include <lui/justify.hpp>
+#include <lui/lui.h>
 #include <lui/rectangle.hpp>
 #include <lui/transform.hpp>
 
@@ -59,7 +59,7 @@ struct TextMetrics {
 
 /** Lower level graphics context.
     @ingroup graphics
-    @headerfile lvtk/ui/graphics.hpp
+    @headerfile lui/graphics.hpp
 */
 class LUI_API DrawingContext {
 public:
@@ -153,8 +153,6 @@ public:
         Justify applies the the point, not the space being drawn in to.
 
         @param text The text to draw.
-        @param x The x coordinate.
-        @param y The y coordinate.
      */
     virtual bool show_text (const std::string_view text) {
         lui::ignore (text);
@@ -171,7 +169,7 @@ public:
     until we approach an alpha status.
 
     @ingroup graphics
-    @headerfile lvtk/ui/graphics.hpp
+    @headerfile lui/graphics.hpp
  */
 class LUI_API Graphics final {
 public:

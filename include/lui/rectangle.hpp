@@ -5,15 +5,15 @@
 
 #include <algorithm>
 
-#include <lui/string.hpp>
 #include <lui/point.hpp>
+#include <lui/string.hpp>
 
 namespace lui {
 
 /** A rectangle. x y width height.
     @tparam Val the value type of this rectangle.
     @ingroup graphics
-    @headerfile lvtk/ui/rectangle.hpp
+    @headerfile lui/rectangle.hpp
 */
 template <typename Val>
 struct Rectangle {
@@ -305,7 +305,7 @@ struct Rectangle {
 /** Bounds alias Rectangle<int>
     @see Rectangle
     @ingroup graphics
-    @headerfile lvtk/ui/graphics.hpp
+    @headerfile lui/graphics.hpp
 */
 using Bounds = Rectangle<int>;
 

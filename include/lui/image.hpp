@@ -29,7 +29,7 @@ enum class PixelFormat {
 
 /** Pixel data
     @ingroup graphics
-    @headerfile lvtk/ui/path.hpp
+    @headerfile lui/path.hpp
 */
 class LUI_API Pixels {
 public:
@@ -48,7 +48,7 @@ public:
 
 /** An image
     @ingroup graphics
-    @headerfile lvtk/ui/path.hpp
+    @headerfile lui/path.hpp
 */
 class LUI_API Image {
 public:

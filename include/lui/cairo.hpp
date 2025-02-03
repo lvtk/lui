@@ -16,7 +16,7 @@ class Widget;
 
     @ingroup widgets
     @ingroup graphics
-    @headerfile lvtk/ui/cairo.hpp 
+    @headerfile lui/cairo.hpp 
 */
 struct LUI_API Cairo : public Backend {
     Cairo() : Backend ("Cairo") {}

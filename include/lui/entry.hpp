@@ -13,7 +13,7 @@ class Entry;
 
 /** Single line text entry widget 
     @ingroup widgets
-    @headerfile lvtk/ui/entry.hpp
+    @headerfile lui/entry.hpp
 */
 class LUI_API Entry : public Widget {
 public:

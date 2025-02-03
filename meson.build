@@ -9,6 +9,13 @@ project ('lui', ['cpp', 'c'],
         'cpp_std=c++20',
     ])
 
+# library versioning
+version_array = meson.project_version().split('.')
+lui_version_major = version_array[0].to_int()
+lui_version_minor = version_array[1].to_int()
+lui_version_micro = version_array[2].to_int()
+lui_abi_version = '0.0'
+
 if host_machine.system() == 'darwin'
     add_languages (['objcpp', 'objc' ])
 endif
@@ -16,15 +23,8 @@ endif
 pymod = import('python')
 python3_exe = pymod.find_installation ('python3')
 bundle_py   = files ('scripts/bundle.py').get(0)
-date_py = files ('scripts/date.py')
-release_date = run_command (python3_exe, date_py, check: false).stdout().strip()
-version_py = files ('scripts/version.py')
-version_with_build = run_command (python3_exe, 
-    [version_py, '--build --ignore-dirty --cwd=.'.split()], check: false).stdout().strip()
-build_number = run_command (python3_exe, 
-    [version_py, '--no-version --build --ignore-dirty --cwd=.'.split()], check: false).stdout().strip()
 
-lui_abi_version = '0.0'
+headers = []
 
 subdir ('meson/deps')
 subdir ('meson/supress')
@@ -43,8 +43,6 @@ lui_internal_dep = declare_dependency (
 
 ### shared libs
 subdir ('src')
-
-
 
 if not get_option('bindings').disabled()
     # subdir ('bindings')

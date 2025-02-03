@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include <lui/lui.h>
 #include <lui/justify.hpp>
+#include <lui/lui.h>
 #include <lui/rectangle.hpp>
 #include <lui/transform.hpp>
 

@@ -13,9 +13,9 @@
 
 #include <lv2/ui/ui.h>
 
-#include <lui/lui.h>
 #include <lui/graphics.hpp>
 #include <lui/input.hpp>
+#include <lui/lui.h>
 #include <lui/view.hpp>
 #include <lui/weak_ref.hpp>
 
@@ -27,7 +27,7 @@ class Widget;
 
 /** Base class for all Widgets and Windows.
     @ingroup widgets
-    @headerfile lvtk/ui/widget.hpp
+    @headerfile lui/widget.hpp
 */
 class LUI_API Widget {
 public:

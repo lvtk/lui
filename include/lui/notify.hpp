@@ -9,7 +9,7 @@ namespace lui {
 
 /** A type of notification
     @ingroup widgets
-    @headerfile lvtk/ui/slider.hpp
+    @headerfile lui/slider.hpp
  */
 enum class Notify : uint32_t {
     NONE = 0, ///< Don't send any notification

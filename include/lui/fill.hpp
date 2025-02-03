@@ -3,16 +3,16 @@
 
 #pragma once
 
-#include <lui/lui.h>
 #include <lui/color.hpp>
 #include <lui/image.hpp>
+#include <lui/lui.h>
 
 namespace lui {
 
 /** A type of Fill used by DrawingContext
     i.e. fill Solid, Image, Gradient.
     @ingroup graphics
-    @headerfile lvtk/ui/fill.hpp
+    @headerfile lui/fill.hpp
  */
 class LUI_API Fill {
 public:

@@ -11,7 +11,7 @@ namespace lui {
 /** A 32bit color value.
     The value represented by a uint32_t. e.g. 0xRRGGBBAA
     @ingroup graphics
-    @headerfile lvtk/ui/color.hpp
+    @headerfile lui/color.hpp
  */
 class Color {
 public:

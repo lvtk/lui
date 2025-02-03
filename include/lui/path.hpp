@@ -11,7 +11,7 @@ namespace lui {
 
 /** A type of operation used when processing path data
     @ingroup graphics
-    @headerfile lvtk/ui/path.hpp
+    @headerfile lui/path.hpp
 */
 enum class PathOp : int {
     MOVE = 100000, ///< Move to
@@ -23,7 +23,7 @@ enum class PathOp : int {
 
 /** The element_type for Path<T>::iterator
     @ingroup graphics
-    @headerfile lvtk/ui/path.hpp
+    @headerfile lui/path.hpp
 */
 struct PathItem final {
     /** Type of operation */
@@ -44,7 +44,7 @@ struct PathItem final {
 
 /** Drawable path.
     @ingroup graphics
-    @headerfile lvtk/ui/path.hpp
+    @headerfile lui/path.hpp
 */
 class Path {
 public:

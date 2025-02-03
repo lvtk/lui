@@ -20,7 +20,7 @@ namespace lui {
 /** A range of two values
     E.g. min and max with some conversion helpers
     @ingroup widgets
-    @headerfile lvtk/ui/slider.hpp
+    @headerfile lui/slider.hpp
     @tparam Val the value type
  */
 template <typename Val>
@@ -67,7 +67,7 @@ public:
     setup
 
     @ingroup widgets
-    @headerfile lvtk/ui/slider.hpp
+    @headerfile lui/slider.hpp
     @see Slider,Dial
 */
 class LUI_API Ranged : public Widget {
@@ -109,7 +109,7 @@ private:
     Can be styled as linear bar or thumb on a track
 
     @ingroup widgets
-    @headerfile lvtk/ui/slider.hpp
+    @headerfile lui/slider.hpp
 */
 class LUI_API Slider : public Ranged {
 public:
@@ -150,7 +150,7 @@ private:
 
 /** A type of dial. Like a Knob on a synth.
     @ingroup widgets
-    @headerfile lvtk/ui/slider.hpp
+    @headerfile lui/slider.hpp
 */
 class LUI_API Dial : public Ranged {
 public:

@@ -20,7 +20,7 @@ namespace lui {
     implementations don't need to use this.  You can, however, use this in a 
     LV2 host to easily provide URID map/unmaping features to plugins.
 
-    @headerfile lvtk/symbols.hpp
+    @headerfile lui/symbols.hpp
     @ingroup lvtk
  */
 class LUI_API Symbols final {

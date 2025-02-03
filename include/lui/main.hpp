@@ -25,7 +25,7 @@ class Widget;
 /** The running mode type of a UI context. 
     @see Main
     @ingroup widgets
-    @headerfile lvtk/ui/main.hpp
+    @headerfile lui/main.hpp
  */
 enum class Mode {
     PROGRAM = 0, ///< Standalone application
@@ -35,7 +35,7 @@ enum class Mode {
 /** The context in which a UI or GUI app is running.
     Can create views and run the event loop
     @ingroup widgets
-    @headerfile lvtk/ui/main.hpp
+    @headerfile lui/main.hpp
  */
 class LUI_API Main : public Context {
 public:
@@ -142,7 +142,7 @@ private:
 };
 
 /** Backend implementation.
-    @headerfile lvtk/ui/main.hpp
+    @headerfile lui/main.hpp
     @ingroup widgets
  */
 class LUI_API Backend {
