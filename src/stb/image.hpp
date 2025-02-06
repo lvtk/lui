@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: ISC
 
 #pragma once
-
+#include <iostream>
 #include <string>
 
 #include <stb/stb_image.h>
@@ -34,6 +34,20 @@ static inline void rgba_to_argb_and_premulitply (uint8_t* image, Size size) {
     }
 }
 
+/** Converts STBI 4 channel output to premultiplied ARGB as expected by lui::Image. */
+inline uint8_t* rgb_to_argb (const uint8_t* image, int width, int height) {
+    uint8_t* new_image = (uint8_t*) std::calloc (width * height * 4, sizeof(uint8_t));
+    uint32_t ni = 0;
+    for (uint32_t i = 0; i < static_cast<uint32_t> (3 * width * height); i += 3) {
+        new_image[ni + 0] = image[i + 2];
+        new_image[ni + 1] = image[i + 1];
+        new_image[ni + 2] = image[i + 0];
+        new_image[ni + 3] = 0xff;
+        ni += 4;
+    }
+    return new_image;
+}
+
 static inline uint8_t* load_memory (const uint8_t* buffer,
                                     uint32_t size,
                                     int& width, int& height, 
@@ -41,7 +55,7 @@ static inline uint8_t* load_memory (const uint8_t* buffer,
 {
     prepare_load();
 
-    auto image = stbi_load_from_memory (buffer, (int)size, &width, &height, &num_components, 4);
+    auto image = stbi_load_from_memory (buffer, (int)size, &width, &height, &num_components, 0);
 
     if (image == nullptr || num_components <= 0 || width <= 0 || height <= 0) {
         width = height = num_components = 0;
@@ -51,7 +65,16 @@ static inline uint8_t* load_memory (const uint8_t* buffer,
         return nullptr;
     }
 
-    rgba_to_argb_and_premulitply (image, 4 * width * height);
+    if (num_components == 3) {
+        uint8_t* old_image = image;
+        image = (stbi_uc*) rgb_to_argb (old_image, width, height);
+        if (old_image != image)
+            stbi_image_free (old_image);
+        num_components = 4;
+    }
+    else {
+        rgba_to_argb_and_premulitply (image, 4 * width * height);
+    }
     
     return image;
 }
@@ -62,7 +85,7 @@ static inline uint8_t* load_file (std::string_view filename,
 
     prepare_load();
     
-    auto image = stbi_load (filename.data(), &width, &height, &num_components, 4);
+    auto image = stbi_load (filename.data(), &width, &height, &num_components, 0);
 
     if (image == nullptr || num_components <= 0 || width <= 0 || height <= 0) {
         width = height = num_components = 0;
@@ -72,7 +95,16 @@ static inline uint8_t* load_file (std::string_view filename,
         return nullptr;
     }
     
-    rgba_to_argb_and_premulitply (image, 4 * width * height);
+    if (num_components == 3) {
+        uint8_t* old_image = image;
+        image = (stbi_uc*) rgb_to_argb (old_image, width, height);
+        if (old_image != image)
+            stbi_image_free (old_image);
+        num_components = 4;
+    }
+    else {
+        rgba_to_argb_and_premulitply (image, 4 * width * height);
+    }
 
     return image;
 }
