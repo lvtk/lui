@@ -81,47 +81,47 @@ lua_program = find_program ('', required : false)
 lua_version = '0.0.0'
 
 if not get_option ('bindings').disabled()
-  ## Lua: Use either lua 5.3 or 5.4 depending on what's on the
-  # system.  If lua not found. Use 5.4.
+    ## Lua: Use either lua 5.3 or 5.4 depending on what's on the
+    # system.  If lua not found. Use 5.4.
 
-  lua_system = false
+    lua_system = false
 
-  if host_machine.system() != 'windows'
-    lua_dep = dependency('', required : false)
-    lua_version = ''
-    lua_program = find_program ('lua5.4', required : false)
+    if host_machine.system() != 'windows'
+        lua_dep = dependency('', required : false)
+        lua_version = ''
+        lua_program = find_program ('lua5.4', required : false)
 
-    if not lua_program.found()
-        lua_program = find_program('lua5.3', required : false)
-    endif
+        if not lua_program.found()
+            lua_program = find_program('lua5.3', required : false)
+        endif
 
-    if not lua_program.found()
-        lua_program = find_program('lua', required : false)
-    endif
+        if not lua_program.found()
+            lua_program = find_program('lua', required : false)
+        endif
 
-    if lua_program.found()
-        pymod = import('python')
-        lua_version = run_command(pymod.find_installation('python3'), '../../scripts/luavers.py',
-            lua_program, check : true).stdout().strip()
-        if not lua_version.version_compare ('>= 5.3')
-          lua_system = false
-        else
-          lua_system = true
+        if lua_program.found()
+            pymod = import('python')
+            lua_version = run_command(pymod.find_installation('python3'), '../../scripts/luavers.py',
+                lua_program, check : true).stdout().strip()
+            if not lua_version.version_compare ('>= 5.3')
+            lua_system = false
+            else
+            lua_system = true
+            endif
         endif
     endif
-  endif
 
-  if not lua_system
-    lua_proj = subproject ('lua', 
-      default_options : [
-        'loadlib=disabled',
-        'interpreter=true',
-        'line_editing=disabled'
-      ])
+    if not lua_system
+        lua_proj = subproject ('lua', 
+        default_options : [
+            'loadlib=disabled',
+            'interpreter=true',
+            'line_editing=disabled'
+        ])
 
-    lua_dep = lua_proj.get_variable ('lua_dep')
-    lua_version = '5.4'
-    lua_program = lua_proj.get_variable ('lua_exe')
-    lua_system = false
-  endif
+        lua_dep = lua_proj.get_variable ('lua_dep')
+        lua_version = '5.4'
+        lua_program = lua_proj.get_variable ('lua_exe')
+        lua_system = false
+    endif
 endif
