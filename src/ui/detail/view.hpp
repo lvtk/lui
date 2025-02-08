@@ -496,8 +496,8 @@ private:
         auto h = (float) ev.height / view.scale_factor();
         auto r = Rectangle<float> { x, y, w, h }.as<int>();
 
-        view.owner.expose (detail::rect<int> (ev));
-        // view.owner.expose (r.intersection (view.owner.bounds().at (0)));
+        // view.owner.expose (detail::rect<int> (ev));
+        view.owner.expose (r.intersection (view.owner.bounds().at (0)));
         return PUGL_SUCCESS;
     }
 
