@@ -1,4 +1,4 @@
-// Copyright 2022 Michael Fisher <mfisher@lvtk.org>
+// Copyright 2022-2025 Michael Fisher <mfisher@lvtk.org>
 // SPDX-License-Identifier: ISC
 
 #pragma once
@@ -18,7 +18,9 @@
 #include "ui/detail/main.hpp"
 #include "ui/detail/widget.hpp"
 
-#include "ui/detail/main.hpp"
+#ifndef LUI_DISABLE_CLIPPING
+#    define LUI_DISABLE_CLIPPING 1
+#endif
 
 #define LUI_MAX_BUTTONS        4
 #define LUI_SCALE_IN_CONFIGURE 0
@@ -494,8 +496,8 @@ private:
         auto h = (float) ev.height / view.scale_factor();
         auto r = Rectangle<float> { x, y, w, h }.as<int>();
 
-        // view.owner.expose (r * view.scale_factor());
-        view.owner.expose (r.intersection (view.owner.bounds().at (0)));
+        view.owner.expose (detail::rect<int> (ev));
+        // view.owner.expose (r.intersection (view.owner.bounds().at (0)));
         return PUGL_SUCCESS;
     }
 
