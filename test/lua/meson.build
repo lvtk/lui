@@ -13,10 +13,6 @@ if host_machine.system() != 'windows'
     lua_tests += [ 'loadall' ]
 endif
 
-if lilv_dep.found()
-    lua_tests += 'World'
-endif
-
 foreach key : lua_tests
     luafile = '@0@'.format(meson.project_source_root()) / 'test' / 'lua' / '@0@.lua'.format(key)
     test (key, lua_program, args : [ luafile ], suite: 'lua',

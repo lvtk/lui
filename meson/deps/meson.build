@@ -72,13 +72,8 @@ if cairo_dep.found()
     )
 endif
 
-### Lilv & Suil
-lilv_dep = dependency ('lilv-0', required : false)
-suil_dep = dependency ('suil-0', required : false)
-
 ### Boost
-build_widgets = true
-boost_dep = dependency ('boost', required : build_widgets or get_option('test').enabled())
+boost_dep = dependency ('boost', required: get_option('test').enabled())
 
 ### Lua if wanted
 lua_dep = dependency ('', required : false)
