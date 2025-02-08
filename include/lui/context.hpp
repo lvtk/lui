@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <lui/symbols.hpp>
+#include <lui/lui.h>
 
 namespace lui {
 
@@ -13,10 +13,6 @@ protected:
 
 public:
     ~Context() = default;
-    Symbols& symbols() { return _symbols; }
-
-private:
-    Symbols _symbols;
 };
 
 } // namespace lui
