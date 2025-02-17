@@ -73,7 +73,8 @@ if cairo_dep.found()
 endif
 
 ### Boost
-boost_dep = dependency ('boost', required: get_option('test').enabled())
+# required, for signals (subject to change) and tests.
+boost_dep = dependency ('boost', required: true)
 
 ### Lua if wanted
 lua_dep = dependency ('', required : false)
