@@ -1,7 +1,7 @@
 // Copyright 2022 Michael Fisher <mfisher@lvtk.org>
 // SPDX-License-Identifier: ISC
 
-/** @mainpage LV2 Toolkit
+/** @mainpage LUI
 
     @section intro Introduction
     These documents describe some C++ classes that may be of use if you want
@@ -33,7 +33,6 @@
 #include <vector>
 
 #include <lui/lui.h>
-#include <lv2/core/lv2.h>
 
 namespace lui {
 /** @defgroup alias Alias 
