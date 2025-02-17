@@ -11,8 +11,7 @@
 
 #include <vector>
 
-#include <lv2/ui/ui.h>
-
+#include <lui/lui.h>
 #include <lui/graphics.hpp>
 #include <lui/input.hpp>
 #include <lui/lui.h>
@@ -195,9 +194,6 @@ public:
         @returns Style The style used
      */
     Style& style();
-
-    /** Cast to a LV2UI_Widget */
-    operator LV2UI_Widget() const noexcept { return (LV2UI_Widget) find_handle(); }
 
 protected:
     void set_opaque (bool opaque);
