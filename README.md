@@ -1,6 +1,4 @@
-[![Piplene](https://gitlab.com/lvtk/lvtk/badges/main/pipeline.svg)](https://gitlab.com/lvtk/lvtk/-/pipelines)
-[![CodeFactor](https://www.codefactor.io/repository/github/lvtk/lvtk/badge)](https://www.codefactor.io/repository/github/lvtk/lvtk)
-[![REUSE status](https://api.reuse.software/badge/gitlab.com/lvtk/lvtk)](https://api.reuse.software/info/gitlab.com/lvtk/lvtk)
+[![REUSE status](https://api.reuse.software/badge/github.com/lvtk/lui)](https://api.reuse.software/info/github.com/lvtk/lui)
 
 # Lui
 
